@@ -1,10 +1,13 @@
-import RestService from "./RestService";
+import { ContactBook, ContactBookRequestBody } from "./Interfaces/ContactBook";
+import ContactBookRepository from "./Repository/ContactBookRepository";
 
 class ContactBookService {
-  index() {
-    return RestService.index("/contact_books").then((response) =>
-      response.json()
-    );
+  index(): Promise<ContactBook[]> {
+    return ContactBookRepository.index();
+  }
+
+  new(data: ContactBookRequestBody): Promise<ContactBook> {
+    return ContactBookRepository.post(data);
   }
 }
 

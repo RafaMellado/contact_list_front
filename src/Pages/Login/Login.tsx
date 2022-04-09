@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import LoginService from "../../Services/Login";
+import AuthenticationService from "../../Services/AuthenticationService";
 
 export function Login() {
   const { t } = useTranslation();
@@ -13,17 +13,13 @@ export function Login() {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
-  const login = async (event: any) => {
+  const login = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const logged = await LoginService.login({
+    AuthenticationService.login({
       email: String(email?.current?.value),
       password: String(password?.current?.value),
     });
-
-    if (logged) {
-      navigate("/home");
-    }
   };
 
   return (

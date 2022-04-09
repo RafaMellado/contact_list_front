@@ -1,30 +1,38 @@
 import Cookies from "universal-cookie";
 
+const authorizationToken = () => {
+  const cookies = new Cookies();
+
+  return cookies.get("user")?.token;
+};
+
+const headers = {
+  "Content-Type": "application/json",
+};
+
+const authorizationHeaders = {
+  ...headers,
+  Authorization: authorizationToken(),
+};
+
 class RestService {
-  index(path: string) {
-    return fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
+  async index<T>(path: string) {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: this.authorizationToken(),
-      },
+      headers: authorizationHeaders,
     });
+
+    return (await response.json()) as T;
   }
 
-  post(path: string, requestData: object) {
-    return fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
+  async post<T>(path: string, requestData: object) {
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: authorizationHeaders,
       body: JSON.stringify({ ...requestData }),
     });
-  }
 
-  authorizationToken() {
-    const cookies = new Cookies();
-
-    return cookies.get("user").token;
+    return (await response.json()) as T;
   }
 }
 
