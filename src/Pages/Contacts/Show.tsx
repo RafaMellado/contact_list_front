@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import ContactsService from "../../Services/ContactsService";
 import { ContactWithContactHistories } from "../../Services/Interfaces/Contact";
-import { localDate } from "../../Helpers/date";
+import { extractDateAndTimeFromDate } from "../../Helpers/date";
 
 export function ContactShow() {
   const [contact, setContact] = useState<ContactWithContactHistories>();
@@ -58,15 +58,22 @@ export function ContactShow() {
 
               {contact?.contact_histories.map((item, index) => {
                 const { email, created_at } = item;
+                const { date, time } = extractDateAndTimeFromDate(created_at);
 
                 return (
                   <Card key={index}>
                     <Card.Body>
                       <h4>
                         {t<string>(`${TRANSLATIONS}.historyDay`, {
-                          day: localDate(created_at),
+                          date,
+                          time,
                         })}
                       </h4>
+                      <p>
+                        {item.givenname} {item.surname}
+                      </p>
+                      <p>{item.email}</p>
+                      <p>{item.phone}</p>
                     </Card.Body>
                   </Card>
                 );
