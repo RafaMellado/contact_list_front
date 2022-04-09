@@ -1,12 +1,10 @@
 import { FormEvent, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import AuthenticationService from "../../Services/AuthenticationService";
 
 export function Login() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const TRANSLATIONS: string = "login";
 

@@ -3,7 +3,7 @@ import { LoginRequestBody, LoginResponse } from "./Interfaces/Login";
 import LoginRepository from "./Repository/LoginRepository";
 
 class AuthenticationService {
-  async login(data: LoginRequestBody) {
+  async login(data: LoginRequestBody): Promise<void> {
     const response = await LoginRepository.login(data);
 
     if (response.token) {
@@ -13,7 +13,7 @@ class AuthenticationService {
     }
   }
 
-  setAuthCookie(data: LoginResponse) {
+  setAuthCookie(data: LoginResponse): void {
     const cookies = new Cookies();
 
     cookies.set(

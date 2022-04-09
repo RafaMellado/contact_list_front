@@ -1,0 +1,8 @@
+{
+  "contactBooksShow": {
+    "title": "Contacts from the %{name} Contact Book",
+    "contacts": "Contacts",
+    "backBtn": "Back to Contact Book List",
+    "addContactBtn": "Add new contact"
+  }
+}

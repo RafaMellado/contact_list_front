@@ -1,0 +1,10 @@
+{
+  "contactsNew": {
+    "givenname": "Givenname",
+    "surname": "Surname",
+    "email": "Email",
+    "phone": "Phone",
+    "submit": "Add contact",
+    "backBtn": "Back to list"
+  }
+}

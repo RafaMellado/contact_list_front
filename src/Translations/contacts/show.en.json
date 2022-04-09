@@ -1,0 +1,8 @@
+{
+  "contactsShow": {
+    "backBtn": "Back to Contact Book",
+    "editContact": "Edit contact",
+    "history": "History",
+    "historyDay": "Data on day {{day}}"
+  }
+}

@@ -3,7 +3,7 @@ import RestService from "../RestService";
 
 class LoginRepository {
   async login(data: LoginRequestBody) {
-    const response: LoginResponse = await RestService.post<LoginResponse>(
+    const response: LoginResponse = await RestService.create<LoginResponse>(
       "/auth/login",
       data
     );

@@ -1,9 +1,9 @@
 import Cookies from "universal-cookie";
 
-const authorizationToken = () => {
+const authorizationToken: () => string = () => {
   const cookies = new Cookies();
 
-  return cookies.get("user")?.token;
+  return cookies.get("user").token || "";
 };
 
 const headers = {
@@ -16,23 +16,48 @@ const authorizationHeaders = {
 };
 
 class RestService {
-  async index<T>(path: string) {
+  async index<T>(path: string): Promise<T> {
     const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
       method: "GET",
       headers: authorizationHeaders,
     });
 
-    return (await response.json()) as T;
+    return await response.json();
   }
 
-  async post<T>(path: string, requestData: object) {
+  async show<T>(path: string, id: number): Promise<T> {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_HOST}${path}/${id}`,
+      {
+        method: "GET",
+        headers: authorizationHeaders,
+      }
+    );
+
+    return await response.json();
+  }
+
+  async create<T>(path: string, requestData: object): Promise<T> {
     const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
       method: "POST",
       headers: authorizationHeaders,
       body: JSON.stringify({ ...requestData }),
     });
 
-    return (await response.json()) as T;
+    return await response.json();
+  }
+
+  async update<T>(path: string, id: number, requestData: object): Promise<T> {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_HOST}${path}/${id}`,
+      {
+        method: "PUT",
+        headers: authorizationHeaders,
+        body: JSON.stringify({ ...requestData }),
+      }
+    );
+
+    return await response.json();
   }
 }
 

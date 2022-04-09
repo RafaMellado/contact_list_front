@@ -2,20 +2,20 @@ import { FormEvent, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import ContactBookService from "../../Services/ContactBookService";
+import ContactBooksService from "../../Services/ContactBooksService";
 
-export function New() {
+export function ContactBookNew() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const name = useRef<HTMLInputElement>(null);
 
-  const TRANSLATIONS: string = "contactBookNew";
+  const TRANSLATIONS: string = "contactBooksNew";
 
   const addContactBook = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    ContactBookService.new({ name: String(name?.current?.value) });
+    ContactBooksService.create({ name: String(name?.current?.value) });
 
     navigate("/home");
   };

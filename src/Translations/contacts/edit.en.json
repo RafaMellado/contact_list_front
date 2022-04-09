@@ -1,0 +1,10 @@
+{
+  "contactsEdit": {
+    "givenname": "Givenname",
+    "surname": "Surname",
+    "email": "Email",
+    "phone": "Phone",
+    "submit": "Edit contact",
+    "backBtn": "Back"
+  }
+}

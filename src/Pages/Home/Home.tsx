@@ -3,21 +3,25 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ContactBook } from "../../Services/Interfaces/ContactBook";
-import ContactBookService from "../../Services/ContactBookService";
+import ContactBooksService from "../../Services/ContactBooksService";
 
 export function Home() {
   const [contactBooks, setContactBooks] = useState<ContactBook[]>([]);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const TRANSLATIONS: string = "contactBookIndex";
+  const TRANSLATIONS: string = "contactBooksIndex";
 
   useEffect(() => {
-    ContactBookService.index().then((response) => setContactBooks(response));
+    ContactBooksService.index().then((response) => setContactBooks(response));
   }, []);
 
   const addContactBook = () => {
-    navigate("/contact_book/new");
+    navigate("/contact-book/new");
+  };
+
+  const goToContactBook = (id: number) => {
+    navigate(`/contact-book/show/${id}`);
   };
 
   return (
@@ -27,11 +31,19 @@ export function Home() {
           <h2>{t<string>(`${TRANSLATIONS}.title`)}</h2>
 
           {contactBooks.map((item: ContactBook) => {
+            const { id, name } = item;
+
             return (
-              <Col xs={12} sm={6} md={3} key={item.id}>
+              <Col
+                xs={12}
+                sm={6}
+                md={3}
+                key={id}
+                onClick={() => goToContactBook(id)}
+              >
                 <Card>
                   <Card.Body>
-                    <h3>{item.name}</h3>
+                    <h3>{name}</h3>
                   </Card.Body>
                 </Card>
               </Col>
