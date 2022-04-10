@@ -5,7 +5,7 @@ export function extractDateAndTimeFromDate(dateToExtract: string): {
   const date = new Date(dateToExtract);
 
   return {
-    date: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
+    date: `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`,
     time: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
   };
 }

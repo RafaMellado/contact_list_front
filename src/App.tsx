@@ -2,13 +2,21 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Routes } from "./Router/Routes";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Header } from "./Layout/Header";
+import { Content } from "./Layout/Content";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Routes />
-      </Router>
+      <div className="d-flex flex-column w-100">
+        <Header></Header>
+
+        <Content>
+          <Router>
+            <Routes />
+          </Router>
+        </Content>
+      </div>
     </div>
   );
 }

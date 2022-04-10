@@ -1,17 +1,24 @@
 import { FormEvent, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useParams } from "react-router-dom";
-import ContactsService from "../../../Services/ContactsService";
-import { Contact } from "../../../Services/Interfaces/Contact";
+import {
+  Contact,
+  ContactRequestBody,
+} from "../../../Services/Interfaces/Contact";
 
 interface ContactFormProps {
   data?: Contact;
   translations: string;
+  submitFn: (data: Partial<ContactRequestBody>) => void;
+  backToListFn: () => void;
 }
 
-export function ContactForm({ data, translations }: ContactFormProps) {
-  const navigate = useNavigate();
+export function ContactForm({
+  data,
+  translations,
+  submitFn,
+  backToListFn,
+}: ContactFormProps) {
   const { t } = useTranslation();
 
   const givenname = useRef<HTMLInputElement>(null);
@@ -19,49 +26,24 @@ export function ContactForm({ data, translations }: ContactFormProps) {
   const email = useRef<HTMLInputElement>(null);
   const phone = useRef<HTMLInputElement>(null);
 
-  const { id, contactBookId } = useParams();
-
-  const backToList = () => {
-    const currentContactBookId = contactBookId
-      ? contactBookId
-      : data?.contact_book_id;
-
-    navigate(`/contact-book/show/${currentContactBookId}`);
-  };
-
   const formParams = () => {
     return {
       givenname: String(givenname?.current?.value),
       surname: String(surname?.current?.value),
       email: String(email?.current?.value),
       phone: String(phone?.current?.value),
-      contact_book_id: Number(contactBookId) || Number(data?.contact_book_id),
     };
   };
 
-  const addContact = async (event: FormEvent<HTMLFormElement>) => {
+  const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await ContactsService.create(formParams());
-
-    backToList();
-  };
-
-  const editContact = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    await ContactsService.update(Number(id), formParams());
-
-    backToList();
-  };
-
-  const manageForm = (event: FormEvent<HTMLFormElement>) => {
-    data ? editContact(event) : addContact(event);
+    submitFn(formParams());
   };
 
   return (
     <>
-      <Form onSubmit={manageForm}>
+      <Form onSubmit={submit}>
         <Form.Group className="mb-3">
           <Form.Label>{t<string>(`${translations}.givenname`)}</Form.Label>
           <Form.Control
@@ -119,7 +101,7 @@ export function ContactForm({ data, translations }: ContactFormProps) {
           {t<string>(`${translations}.submit`)}
         </Button>
 
-        <Button variant="primary" onClick={() => backToList()}>
+        <Button variant="primary" onClick={() => backToListFn()}>
           {t<string>(`${translations}.backBtn`)}
         </Button>
       </Form>

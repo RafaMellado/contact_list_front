@@ -1,9 +1,10 @@
 import { Routes as Switch, Route } from "react-router-dom";
 import { Login } from "../Pages/Login/Login";
-import { Home } from "../Pages/Home/Home";
+import { Home } from "../Pages/ContactBooks/Index";
 import { ContactBookNew } from "../Pages/ContactBooks/New";
-import { ContactNew } from "../Pages/Contacts/New";
 import { ContactBookShow } from "../Pages/ContactBooks/Show";
+import { ContactBookEdit } from "../Pages/ContactBooks/Edit";
+import { ContactNew } from "../Pages/Contacts/New";
 import { ContactShow } from "../Pages/Contacts/Show";
 import { ContactEdit } from "../Pages/Contacts/Edit";
 import { PrivateRoute } from "./PrivateRoute";
@@ -22,6 +23,10 @@ export function Routes() {
       <Route
         path="/contact-book/show/:id"
         element={<PrivateRoute RouteComponent={ContactBookShow} />}
+      />
+      <Route
+        path="/contact-book/:id/edit"
+        element={<PrivateRoute RouteComponent={ContactBookEdit} />}
       />
 
       <Route

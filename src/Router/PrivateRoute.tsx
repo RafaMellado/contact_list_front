@@ -9,7 +9,7 @@ export function PrivateRoute({ RouteComponent }: PrivateRouteProps) {
   const loggedIn = () => {
     const cookies = new Cookies();
 
-    return !!cookies.get("user");
+    return !!cookies.get("contact-list-user");
   };
 
   return loggedIn() ? <RouteComponent /> : <Navigate replace to="/" />;

@@ -13,11 +13,19 @@ class AuthenticationService {
     }
   }
 
+  logout() {
+    const cookies = new Cookies();
+
+    cookies.remove("contact-list-user");
+
+    window.location.href = "/";
+  }
+
   setAuthCookie(data: LoginResponse): void {
     const cookies = new Cookies();
 
     cookies.set(
-      "user",
+      "contact-list-user",
       { token: data.token, username: data.username },
       { expires: new Date(data.exp) }
     );

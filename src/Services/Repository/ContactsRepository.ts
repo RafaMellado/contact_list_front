@@ -33,6 +33,12 @@ class ContactsRepository {
     return this.contact(contact);
   }
 
+  async delete(id: number): Promise<Response> {
+    const response = await RestService.delete("/contacts", id);
+
+    return response;
+  }
+
   contact(data: ContactDTO): Contact {
     const { id, givenname, surname, email, phone, contact_book_id } = data;
 

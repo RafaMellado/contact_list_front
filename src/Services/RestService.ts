@@ -3,7 +3,7 @@ import Cookies from "universal-cookie";
 const authorizationToken: () => string = () => {
   const cookies = new Cookies();
 
-  return cookies.get("user").token || "";
+  return String(cookies.get("contact-list-user")?.token);
 };
 
 const headers = {
@@ -58,6 +58,18 @@ class RestService {
     );
 
     return await response.json();
+  }
+
+  async delete<T>(path: string, id: number): Promise<Response> {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_HOST}${path}/${id}`,
+      {
+        method: "DELETE",
+        headers: authorizationHeaders,
+      }
+    );
+
+    return await response;
   }
 }
 

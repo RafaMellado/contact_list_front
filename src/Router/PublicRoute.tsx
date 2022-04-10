@@ -9,7 +9,7 @@ export function PublicRoute({ RouteComponent }: PublicRouteProps) {
   const notLogged = () => {
     const cookies = new Cookies();
 
-    return !cookies.get("user");
+    return !cookies.get("contact-list-user");
   };
 
   return notLogged() ? <RouteComponent /> : <Navigate replace to="/home" />;

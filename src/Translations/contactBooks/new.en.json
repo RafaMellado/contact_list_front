@@ -1,6 +1,7 @@
 {
   "contactBooksNew": {
     "name": "Add new contact book",
-    "submit": "Add"
+    "submit": "Add",
+    "back": "Back"
   }
 }

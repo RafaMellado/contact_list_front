@@ -17,6 +17,10 @@ class ContactsService {
   update(id: number, data: ContactRequestBody): Promise<Contact> {
     return ContactsRepository.update(id, data);
   }
+
+  delete(id: number): Promise<Response> {
+    return ContactsRepository.delete(id);
+  }
 }
 
 export default new ContactsService();

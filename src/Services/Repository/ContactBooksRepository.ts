@@ -34,6 +34,22 @@ class ContactBookRepository {
     return this.contactBook(contactBook);
   }
 
+  async update(id: number, data: ContactBookRequestBody): Promise<ContactBook> {
+    const contactBook: ContactBookDTO = await RestService.update(
+      "/contact_books",
+      id,
+      data
+    );
+
+    return this.contactBook(contactBook);
+  }
+
+  async delete(id: number): Promise<Response> {
+    const response = await RestService.delete("/contact_books", id);
+
+    return response;
+  }
+
   contactBook(data: ContactBookDTO): ContactBook {
     const { id, name, user_id } = data;
 

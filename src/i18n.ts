@@ -1,9 +1,11 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import layoutHeaderTranslation from "./Translations/layout/header.en.json";
 import loginTranslation from "./Translations/login.en.json";
 import contactBookIndexTranslation from "./Translations/contactBooks/index.en.json";
 import contactBookNewTranslation from "./Translations/contactBooks/new.en.json";
 import contactBookShowTranslation from "./Translations/contactBooks/show.en.json";
+import contactBookEditTranslation from "./Translations/contactBooks/edit.en.json";
 import contactsEditTranslation from "./Translations/contacts/edit.en.json";
 import contactsNewTranslation from "./Translations/contacts/new.en.json";
 import contactsShowTranslation from "./Translations/contacts/show.en.json";
@@ -16,6 +18,7 @@ i18n
     resources: {
       en: {
         translation: {
+          ...layoutHeaderTranslation,
           ...loginTranslation,
           ...contactBookNewTranslation,
           ...contactBookIndexTranslation,
@@ -23,6 +26,7 @@ i18n
           ...contactsNewTranslation,
           ...contactsShowTranslation,
           ...contactsEditTranslation,
+          ...contactBookEditTranslation,
         },
       },
     },
