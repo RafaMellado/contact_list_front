@@ -1,5 +1,6 @@
 import { Routes as Switch, Route } from "react-router-dom";
 import { Login } from "../Pages/Login/Login";
+import { SignUp } from "../Pages/SignUp/SignUp";
 import { Home } from "../Pages/ContactBooks/Index";
 import { ContactBookNew } from "../Pages/ContactBooks/New";
 import { ContactBookShow } from "../Pages/ContactBooks/Show";
@@ -14,6 +15,11 @@ export function Routes() {
   return (
     <Switch>
       <Route path="/" element={<PublicRoute RouteComponent={Login} />} />
+      <Route
+        path="/sign-up"
+        element={<PublicRoute RouteComponent={SignUp} />}
+      />
+
       <Route path="/home" element={<PrivateRoute RouteComponent={Home} />} />
 
       <Route

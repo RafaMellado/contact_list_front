@@ -1,16 +1,14 @@
 import { Navigate } from "react-router-dom";
-import Cookies from "universal-cookie";
+import AuthenticationService from "../Services/AuthenticationService";
 
 interface PrivateRouteProps {
   RouteComponent: any;
 }
 
 export function PrivateRoute({ RouteComponent }: PrivateRouteProps) {
-  const loggedIn = () => {
-    const cookies = new Cookies();
-
-    return !!cookies.get("contact-list-user");
-  };
-
-  return loggedIn() ? <RouteComponent /> : <Navigate replace to="/" />;
+  return AuthenticationService.isLogged() ? (
+    <RouteComponent />
+  ) : (
+    <Navigate replace to="/" />
+  );
 }

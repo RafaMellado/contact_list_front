@@ -1,7 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import layoutHeaderTranslation from "./Translations/layout/header.en.json";
-import loginTranslation from "./Translations/login.en.json";
+import loginTranslation from "./Translations/authorization/login.en.json";
+import signUpTranslation from "./Translations/authorization/signUp.en.json";
 import contactBookIndexTranslation from "./Translations/contactBooks/index.en.json";
 import contactBookNewTranslation from "./Translations/contactBooks/new.en.json";
 import contactBookShowTranslation from "./Translations/contactBooks/show.en.json";
@@ -20,6 +21,7 @@ i18n
         translation: {
           ...layoutHeaderTranslation,
           ...loginTranslation,
+          ...signUpTranslation,
           ...contactBookNewTranslation,
           ...contactBookIndexTranslation,
           ...contactBookShowTranslation,

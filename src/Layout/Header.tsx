@@ -1,22 +1,18 @@
-import { Button } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
 import AuthenticationService from "../Services/AuthenticationService";
+import { MenuLogged } from "./Components/MenuLogged";
+import { MenuUnlogged } from "./Components/MenuUnlogged";
 
 export function Header() {
-  const { t } = useTranslation();
-
   const TRANSLATIONS = "layoutHeader";
-
-  const logout = () => {
-    AuthenticationService.logout();
-  };
 
   return (
     <div className="position-fixed fixed-top p-3">
       <div className="d-flex justify-content-end">
-        <Button className="me-3" variant="primary" onClick={logout}>
-          {t<string>(`${TRANSLATIONS}.logout`)}
-        </Button>
+        {AuthenticationService.isLogged() ? (
+          <MenuLogged translations={TRANSLATIONS} />
+        ) : (
+          <MenuUnlogged translations={TRANSLATIONS} />
+        )}
       </div>
     </div>
   );

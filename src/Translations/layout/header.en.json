@@ -1,5 +1,6 @@
 {
   "layoutHeader": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "signUpBtn": "Sign Up"
   }
 }

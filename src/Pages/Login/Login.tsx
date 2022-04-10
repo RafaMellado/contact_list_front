@@ -33,7 +33,7 @@ export function Login() {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>{t<string>(`${TRANSLATIONS}.password`)}</Form.Label>
           <Form.Control
             as="input"

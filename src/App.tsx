@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <div className="d-flex flex-column w-100">
-        <Header></Header>
-
         <Content>
           <Router>
+            <Header></Header>
+
             <Routes />
           </Router>
         </Content>

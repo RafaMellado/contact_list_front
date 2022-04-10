@@ -1,0 +1,10 @@
+{
+  "signUp": {
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirmation": "Confirm Password",
+    "submit": "Submit",
+    "back": "Back"
+  }
+}
