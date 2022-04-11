@@ -1,26 +1,16 @@
-import Cookies from "universal-cookie";
-
-const authorizationToken: () => string = () => {
-  const cookies = new Cookies();
-
-  return String(cookies.get("contact-list-user")?.token);
-};
+import RestInterceptor from "./Interceptors/RestInterceptor";
 
 const headers = {
   "Content-Type": "application/json",
 };
-
-const authorizationHeaders = {
-  ...headers,
-  Authorization: authorizationToken(),
-};
-
 class RestService {
   async index<T>(path: string): Promise<T> {
     const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
       method: "GET",
-      headers: authorizationHeaders,
+      headers: headers,
     });
+
+    RestInterceptor.interceptor();
 
     return await response.json();
   }
@@ -30,9 +20,11 @@ class RestService {
       `${process.env.REACT_APP_API_HOST}${path}/${id}`,
       {
         method: "GET",
-        headers: authorizationHeaders,
+        headers: headers,
       }
     );
+
+    RestInterceptor.interceptor();
 
     return await response.json();
   }
@@ -40,9 +32,11 @@ class RestService {
   async create<T>(path: string, requestData: object): Promise<T> {
     const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
       method: "POST",
-      headers: authorizationHeaders,
+      headers: headers,
       body: JSON.stringify({ ...requestData }),
     });
+
+    RestInterceptor.interceptor();
 
     return await response.json();
   }
@@ -52,10 +46,12 @@ class RestService {
       `${process.env.REACT_APP_API_HOST}${path}/${id}`,
       {
         method: "PUT",
-        headers: authorizationHeaders,
+        headers: headers,
         body: JSON.stringify({ ...requestData }),
       }
     );
+
+    RestInterceptor.interceptor();
 
     return await response.json();
   }
@@ -65,9 +61,11 @@ class RestService {
       `${process.env.REACT_APP_API_HOST}${path}/${id}`,
       {
         method: "DELETE",
-        headers: authorizationHeaders,
+        headers: headers,
       }
     );
+
+    RestInterceptor.interceptor();
 
     return await response;
   }
