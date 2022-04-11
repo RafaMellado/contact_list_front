@@ -1,5 +1,9 @@
 import { Card } from "react-bootstrap";
-import { BsFillTrashFill, BsPencilSquare } from "react-icons/bs";
+import {
+  BsFillJournalBookmarkFill,
+  BsFillTrashFill,
+  BsPencilSquare,
+} from "react-icons/bs";
 import { Contact } from "../Services/Interfaces/Contact";
 
 interface ContactBookCardProps {
@@ -17,37 +21,45 @@ export function ContactBookContactCard({
 }: ContactBookCardProps) {
   return (
     <>
-      <Card onClick={() => cardFn()}>
-        <Card.Body>
-          <div className="d-flex justify-content-between align-items-center">
-            <h3 className="mb-0">
-              {item.givenname} {item.surname}
-            </h3>
+      <Card className="platform-card" onClick={() => cardFn()}>
+        <Card.Body className="d-flex justify-content-between flex-column">
+          <div className="d-flex flex-column justify-content-between">
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex">
+                <BsFillJournalBookmarkFill className="mt-1 me-2 platform-card-book-icon" />
+                <h5 className="platform-card-text">
+                  {item.givenname} {item.surname}
+                </h5>
+              </div>
+            </div>
 
-            <div>
-              <BsPencilSquare
-                role="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-
-                  editFn();
-                }}
-              />
-
-              <BsFillTrashFill
-                className="ms-2"
-                role="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-
-                  deleteFn();
-                }}
-              />
+            <div className="mt-4">
+              <p className="mb-0">{item.email}</p>
+              <p className="mb-0">{item.phone}</p>
             </div>
           </div>
 
-          <p>{item.email}</p>
-          <p>{item.phone}</p>
+          <div className="d-flex justify-content-end mt-2 platform-card-icons ">
+            <BsPencilSquare
+              role="button"
+              className="platform-card-icon"
+              onClick={(event) => {
+                event.stopPropagation();
+
+                editFn();
+              }}
+            />
+
+            <BsFillTrashFill
+              className="ms-2 platform-card-icon"
+              role="button"
+              onClick={(event) => {
+                event.stopPropagation();
+
+                deleteFn();
+              }}
+            />
+          </div>
         </Card.Body>
       </Card>
     </>

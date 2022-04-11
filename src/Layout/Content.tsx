@@ -1,14 +1,11 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+
+import "./Styles/Content.css";
 
 interface ContentProps {
   children: React.ReactChild;
 }
 
 export function Content({ children }: ContentProps) {
-  return (
-    <Container>
-      <div>{children}</div>
-    </Container>
-  );
+  return <div className="content">{children}</div>;
 }

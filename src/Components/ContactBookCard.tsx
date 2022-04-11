@@ -1,5 +1,9 @@
 import { Card } from "react-bootstrap";
-import { BsPencilSquare, BsFillTrashFill } from "react-icons/bs";
+import {
+  BsPencilSquare,
+  BsFillTrashFill,
+  BsFillJournalBookmarkFill,
+} from "react-icons/bs";
 
 interface ContactBookCardProps {
   name: string;
@@ -13,31 +17,33 @@ export function ContactBookCard({
   deleteFn,
 }: ContactBookCardProps) {
   return (
-    <Card>
-      <Card.Body>
-        <div className="d-flex justify-content-between w-100">
-          <h3>{name}</h3>
+    <Card className="platform-card">
+      <Card.Body className="d-flex justify-content-between flex-column">
+        <div className="d-flex">
+          <BsFillJournalBookmarkFill className="mt-1 me-2 platform-card-book-icon" />
+          <h5 className="platform-card-text">{name}</h5>
+        </div>
 
-          <div>
-            <BsPencilSquare
-              role="button"
-              onClick={(event) => {
-                event.stopPropagation();
+        <div className="d-flex justify-content-end mt-2 platform-card-icons ">
+          <BsPencilSquare
+            role="button"
+            className="platform-card-icon"
+            onClick={(event) => {
+              event.stopPropagation();
 
-                editFn();
-              }}
-            />
+              editFn();
+            }}
+          />
 
-            <BsFillTrashFill
-              className="ms-2"
-              role="button"
-              onClick={(event) => {
-                event.stopPropagation();
+          <BsFillTrashFill
+            className="ms-2 platform-card-icon"
+            role="button"
+            onClick={(event) => {
+              event.stopPropagation();
 
-                deleteFn();
-              }}
-            />
-          </div>
+              deleteFn();
+            }}
+          />
         </div>
       </Card.Body>
     </Card>

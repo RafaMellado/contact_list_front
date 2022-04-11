@@ -41,10 +41,10 @@ export function Home() {
 
   return (
     <Row>
-      <div className="d-flex">
+      <div className="d-flex justify-content-between align-items-center flex-column flex-md-row mb-5">
         <h2>{t<string>(`${TRANSLATIONS}.title`)}</h2>
 
-        <Button className="ms-2" onClick={addContactBook}>
+        <Button className="mt-md-0 mt-2" onClick={addContactBook}>
           {t<string>(`${TRANSLATIONS}.addOther`)}
         </Button>
       </div>
@@ -59,6 +59,7 @@ export function Home() {
             md={3}
             key={id}
             onClick={() => goToContactBook(id)}
+            className="mb-4"
           >
             <ContactBookCard
               name={name}

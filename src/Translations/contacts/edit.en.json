@@ -1,5 +1,6 @@
 {
   "contactsEdit": {
+    "title": "Edit contact '{{name}}'",
     "givenname": "Givenname",
     "surname": "Surname",
     "email": "Email",

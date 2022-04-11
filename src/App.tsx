@@ -4,18 +4,21 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Header } from "./Layout/Header";
 import { Content } from "./Layout/Content";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
     <div className="App">
       <div className="d-flex flex-column w-100">
-        <Content>
+        <Container>
           <Router>
             <Header></Header>
 
-            <Routes />
+            <Content>
+              <Routes />
+            </Content>
           </Router>
-        </Content>
+        </Container>
       </div>
     </div>
   );

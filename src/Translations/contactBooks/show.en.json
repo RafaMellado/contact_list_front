@@ -1,6 +1,7 @@
 {
   "contactBooksShow": {
-    "title": "Contacts from the %{name} Contact Book",
+    "title_zero": "Currently, you don't add any contact :(",
+    "title": "Contacts from the '{{name}}' Contact Book",
     "contacts": "Contacts",
     "backBtn": "Back to Contact Book List",
     "addContactBtn": "Add new contact"

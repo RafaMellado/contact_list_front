@@ -1,0 +1,11 @@
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  padding: 1rem;
+  box-shadow: -1px 3px 5px 3px var(--bs-gray-200);
+  background-color: var(--bs-body-bg);
+  z-index: 1;
+}

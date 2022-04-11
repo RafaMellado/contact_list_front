@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import AuthenticationService from "../../Services/AuthenticationService";
@@ -33,58 +33,67 @@ export function SignUp() {
   };
 
   return (
-    <>
-      <Form onSubmit={submit}>
-        <Form.Group className="mb-3">
-          <Form.Label>{t<string>(`${TRANSLATIONS}.username`)}</Form.Label>
-          <Form.Control
-            as="input"
-            type="text"
-            placeholder={t<string>(`${TRANSLATIONS}.username`)}
-            ref={username}
-          />
-        </Form.Group>
+    <div className="d-flex justify-content-center">
+      <Card>
+        <Card.Body>
+          <Form onSubmit={submit}>
+            <Form.Group className="mb-3">
+              <Form.Label>{t<string>(`${TRANSLATIONS}.username`)}</Form.Label>
+              <Form.Control
+                as="input"
+                type="text"
+                placeholder={t<string>(`${TRANSLATIONS}.username`)}
+                ref={username}
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>{t<string>(`${TRANSLATIONS}.email`)}</Form.Label>
-          <Form.Control
-            as="input"
-            type="text"
-            placeholder={t<string>(`${TRANSLATIONS}.email`)}
-            ref={email}
-          />
-        </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>{t<string>(`${TRANSLATIONS}.email`)}</Form.Label>
+              <Form.Control
+                as="input"
+                type="text"
+                placeholder={t<string>(`${TRANSLATIONS}.email`)}
+                ref={email}
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>{t<string>(`${TRANSLATIONS}.password`)}</Form.Label>
-          <Form.Control
-            as="input"
-            type="password"
-            placeholder={t<string>(`${TRANSLATIONS}.password`)}
-            ref={password}
-          />
-        </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>{t<string>(`${TRANSLATIONS}.password`)}</Form.Label>
+              <Form.Control
+                as="input"
+                type="password"
+                placeholder={t<string>(`${TRANSLATIONS}.password`)}
+                ref={password}
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>
-            {t<string>(`${TRANSLATIONS}.passwordConfirmation`)}
-          </Form.Label>
-          <Form.Control
-            as="input"
-            type="password"
-            placeholder={t<string>(`${TRANSLATIONS}.passwordConfirmation`)}
-            ref={passwordConfirmation}
-          />
-        </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>
+                {t<string>(`${TRANSLATIONS}.passwordConfirmation`)}
+              </Form.Label>
+              <Form.Control
+                as="input"
+                type="password"
+                placeholder={t<string>(`${TRANSLATIONS}.passwordConfirmation`)}
+                ref={passwordConfirmation}
+              />
+            </Form.Group>
 
-        <Button variant="primary" type="submit">
-          {t<string>(`${TRANSLATIONS}.submit`)}
-        </Button>
-
-        <Button className="ms-2" variant="primary" onClick={backToLogin}>
-          {t<string>(`${TRANSLATIONS}.back`)}
-        </Button>
-      </Form>
-    </>
+            <div className="d-flex justify-content-between">
+              <Button
+                className="w-100"
+                variant="secondary"
+                onClick={backToLogin}
+              >
+                {t<string>(`${TRANSLATIONS}.back`)}
+              </Button>
+              <Button className="ms-2 w-100" variant="primary" type="submit">
+                {t<string>(`${TRANSLATIONS}.submit`)}
+              </Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }

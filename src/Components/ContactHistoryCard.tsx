@@ -16,22 +16,20 @@ export function ContactHistoryCard({
   const { date, time } = extractDateAndTimeFromDate(item.created_at);
 
   return (
-    <>
-      <Card>
-        <Card.Body>
-          <h4>
-            {t<string>(`${translations}.historyDay`, {
-              date,
-              time,
-            })}
-          </h4>
-          <p>
-            {item.givenname} {item.surname}
-          </p>
-          <p>{item.email}</p>
-          <p>{item.phone}</p>
-        </Card.Body>
-      </Card>
-    </>
+    <Card className="mb-3">
+      <Card.Body>
+        <h4>
+          {t<string>(`${translations}.historyDay`, {
+            date,
+            time,
+          })}
+        </h4>
+        <p>
+          {item.givenname} {item.surname}
+        </p>
+        <p>{item.email}</p>
+        <p>{item.phone}</p>
+      </Card.Body>
+    </Card>
   );
 }

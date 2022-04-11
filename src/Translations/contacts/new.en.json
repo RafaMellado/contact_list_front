@@ -1,5 +1,6 @@
 {
   "contactsNew": {
+    "title": "Add new contact",
     "givenname": "Givenname",
     "surname": "Surname",
     "email": "Email",

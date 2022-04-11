@@ -1,6 +1,53 @@
+:root {
+  --header-height: 70px;
+  --form-max-width: 570px;
+}
+
 .App {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  margin-top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+}
+
+.platform-form {
+  max-width: var(--form-max-width);
+}
+
+.platform-card {
+  min-height: 10rem;
+}
+
+.platform-card:hover {
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 21%);
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+}
+
+.platform-card-book-icon {
+  min-width: 2rem;
+  font-size: 2rem;
+}
+
+.platform-card-text {
+  word-break: break-word;
+}
+
+.platform-card-icons {
+  font-size: 1.5rem;
+}
+
+.platform-card-icon:hover {
+  color: var(--bs-gray-600);
+}
+
+@media screen and (min-width: 1024px) {
+  .platform-card-icons {
+    font-size: 1rem;
+  }
 }

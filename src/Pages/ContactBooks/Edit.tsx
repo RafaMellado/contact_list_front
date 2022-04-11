@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import ContactBooksService from "../../Services/ContactBooksService";
 import {
@@ -11,6 +12,7 @@ export function ContactBookEdit() {
   const [contactBook, setContactBook] = useState<ContactBook>();
 
   const { id } = useParams();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const TRANSLATIONS: string = "contactBooksEdit";
@@ -34,11 +36,17 @@ export function ContactBookEdit() {
   }, [id]);
 
   return (
-    <ContactBookForm
-      translations={TRANSLATIONS}
-      item={contactBook}
-      submitFn={editContactBook}
-      backFn={backToHome}
-    />
+    <div className="d-flex flex-column align-items-center">
+      <h2 className="mb-4">
+        {t<string>(`${TRANSLATIONS}.title`, { name: contactBook?.name })}
+      </h2>
+
+      <ContactBookForm
+        translations={TRANSLATIONS}
+        item={contactBook}
+        submitFn={editContactBook}
+        backFn={backToHome}
+      />
+    </div>
   );
 }

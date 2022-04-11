@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import {
   ContactBook,
@@ -30,30 +30,33 @@ export function ContactBookForm({
   };
 
   return (
-    <>
-      <Form onSubmit={submit}>
-        <Form.Group className="mb-3">
-          <Form.Label>{t<string>(`${translations}.name`)}</Form.Label>
-          <Form.Control
-            as="input"
-            type="text"
-            defaultValue={item?.name}
-            placeholder={t<string>(`${translations}.name`)}
-            maxLength={20}
-            minLength={4}
-            required
-            ref={name}
-          />
-        </Form.Group>
+    <Card className="form">
+      <Card.Body>
+        <Form onSubmit={submit}>
+          <Form.Group className="mb-3">
+            <Form.Label>{t<string>(`${translations}.name`)}</Form.Label>
+            <Form.Control
+              as="input"
+              type="text"
+              defaultValue={item?.name}
+              placeholder={t<string>(`${translations}.name`)}
+              maxLength={20}
+              minLength={4}
+              required
+              ref={name}
+            />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          {t<string>(`${translations}.submit`)}
-        </Button>
-
-        <Button className="ms-2" variant="primary" onClick={backFn}>
-          {t<string>(`${translations}.back`)}
-        </Button>
-      </Form>
-    </>
+          <div className="d-flex justify-content-between">
+            <Button className="w-100" variant="secondary" onClick={backFn}>
+              {t<string>(`${translations}.back`)}
+            </Button>
+            <Button className="w-100 ms-2" variant="primary" type="submit">
+              {t<string>(`${translations}.submit`)}
+            </Button>
+          </div>
+        </Form>
+      </Card.Body>
+    </Card>
   );
 }

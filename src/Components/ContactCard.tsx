@@ -1,3 +1,4 @@
+import { Card } from "react-bootstrap";
 import { Contact } from "../Services/Interfaces/Contact";
 
 interface ContactCardProps {
@@ -7,15 +8,19 @@ interface ContactCardProps {
 
 export function ContactCard({ item, children }: ContactCardProps) {
   return (
-    <>
-      <h2>
-        {item.givenname} {item.surname}
-      </h2>
+    <Card>
+      <Card.Body>
+        <>
+          <h2>
+            {item.givenname} {item.surname}
+          </h2>
 
-      <h4>{item.email}</h4>
-      <h4>{item.phone}</h4>
+          <h5>{item.email}</h5>
+          <h5>{item.phone}</h5>
 
-      {children}
-    </>
+          {children}
+        </>
+      </Card.Body>
+    </Card>
   );
 }

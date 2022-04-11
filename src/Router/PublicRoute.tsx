@@ -6,9 +6,9 @@ interface PublicRouteProps {
 }
 
 export function PublicRoute({ RouteComponent }: PublicRouteProps) {
-  return !AuthenticationService.isLogged() ? (
-    <RouteComponent />
-  ) : (
+  return AuthenticationService.isLogged() ? (
     <Navigate replace to="/home" />
+  ) : (
+    <RouteComponent />
   );
 }

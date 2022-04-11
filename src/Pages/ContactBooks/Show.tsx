@@ -57,17 +57,22 @@ export function ContactBookShow() {
   return (
     <Row>
       <Col>
-        <h2>{contactBook?.name}</h2>
-
         <Button className="me-2" onClick={backBtn}>
           {t<string>(`${TRANSLATIONS}.backBtn`)}
         </Button>
 
-        <Button onClick={addContact}>
-          {t<string>(`${TRANSLATIONS}.addContactBtn`)}
-        </Button>
+        <div className="d-flex align-items-center justify-content-between my-4">
+          <h2>
+            {t<string>(`${TRANSLATIONS}.title`, {
+              name: contactBook?.name,
+              count: contactBook?.contacts.length,
+            })}
+          </h2>
 
-        <h3>{t<string>(`${TRANSLATIONS}.contacts`)}</h3>
+          <Button onClick={addContact}>
+            {t<string>(`${TRANSLATIONS}.addContactBtn`)}
+          </Button>
+        </div>
 
         <Row>
           {contactBook?.contacts.map((item) => {

@@ -1,7 +1,8 @@
 {
   "contactBooksEdit": {
+    "title": "Edit '{{name}}' contact book",
     "name": "Edit name",
-    "submit": "Edit contact book",
+    "submit": "Edit",
     "back": "Back"
   }
 }
