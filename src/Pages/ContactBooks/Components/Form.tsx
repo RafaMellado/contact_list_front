@@ -1,14 +1,17 @@
 import { FormEvent, useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { ErrorBox } from "../../../Components/ErrorBox";
 import {
   ContactBook,
   ContactBookRequestBody,
+  ContactBookRequestError,
 } from "../../../Services/Interfaces/ContactBook";
 
 interface ContactBookFormProps {
   item?: ContactBook;
   translations: string;
+  errors?: ContactBookRequestError;
   submitFn: (data: ContactBookRequestBody) => void;
   backFn: () => void;
 }
@@ -16,6 +19,7 @@ interface ContactBookFormProps {
 export function ContactBookForm({
   item,
   translations,
+  errors,
   submitFn,
   backFn,
 }: ContactBookFormProps) {
@@ -45,6 +49,8 @@ export function ContactBookForm({
               required
               ref={name}
             />
+
+            {errors && <ErrorBox errors={errors.errors} field="name" />}
           </Form.Group>
 
           <div className="d-flex justify-content-between">

@@ -8,3 +8,7 @@ export interface LoginResponse {
   username: string;
   exp: string;
 }
+
+export interface LoginError {
+  error: string;
+}

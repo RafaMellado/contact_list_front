@@ -24,7 +24,10 @@ exports[`<SignUp /> renders correctly the component 1`] = `
             </label>
             <input
               class="form-control"
+              maxlength="20"
+              minlength="6"
               placeholder="signUp.username"
+              required=""
               type="text"
             />
           </div>
@@ -39,7 +42,8 @@ exports[`<SignUp /> renders correctly the component 1`] = `
             <input
               class="form-control"
               placeholder="signUp.email"
-              type="text"
+              required=""
+              type="email"
             />
           </div>
           <div
@@ -52,7 +56,9 @@ exports[`<SignUp /> renders correctly the component 1`] = `
             </label>
             <input
               class="form-control"
+              minlength="6"
               placeholder="signUp.password"
+              required=""
               type="password"
             />
           </div>
@@ -67,6 +73,7 @@ exports[`<SignUp /> renders correctly the component 1`] = `
             <input
               class="form-control"
               placeholder="signUp.passwordConfirmation"
+              required=""
               type="password"
             />
           </div>

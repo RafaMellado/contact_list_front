@@ -49,3 +49,9 @@ export interface ContactRequestBody {
   phone: string;
   contact_book_id: number;
 }
+
+export interface ContactRequestError {
+  errors: {
+    email: Array<{ error: string; value: string }>;
+  };
+}

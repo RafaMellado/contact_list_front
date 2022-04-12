@@ -1,0 +1,8 @@
+{
+  "errors": {
+    "taken": "{{field}} already exists",
+    "too_short": "{{field}} is too short. Minimum length: {{minimum}}",
+    "confirmation": "Passwords don't match",
+    "login": "Invalid email or password"
+  }
+}

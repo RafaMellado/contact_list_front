@@ -1,15 +1,20 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import ContactsService from "../../Services/ContactsService";
-import { ContactRequestBody } from "../../Services/Interfaces/Contact";
+import {
+  ContactRequestBody,
+  ContactRequestError,
+} from "../../Services/Interfaces/Contact";
 import { ContactForm } from "./Components/Form";
 
 export function ContactNew() {
-  const TRANSLATIONS: string = "contactsNew";
-
   const { contactBookId } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [errors, setErrors] = useState<ContactRequestError>();
+
+  const TRANSLATIONS: string = "contactsNew";
 
   const backToList = () => {
     navigate(`/contact-book/show/${contactBookId}`);
@@ -21,9 +26,13 @@ export function ContactNew() {
       contact_book_id: Number(contactBookId),
     };
 
-    await ContactsService.create(newData as ContactRequestBody);
+    try {
+      await ContactsService.create(newData as ContactRequestBody);
 
-    backToList();
+      backToList();
+    } catch (errors) {
+      setErrors(errors as ContactRequestError);
+    }
   };
 
   return (
@@ -32,6 +41,7 @@ export function ContactNew() {
 
       <ContactForm
         translations={TRANSLATIONS}
+        errors={errors}
         backToListFn={backToList}
         submitFn={addContact}
       />

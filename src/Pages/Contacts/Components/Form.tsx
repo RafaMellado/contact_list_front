@@ -1,14 +1,17 @@
 import { FormEvent, useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { ErrorBox } from "../../../Components/ErrorBox";
 import {
   Contact,
   ContactRequestBody,
+  ContactRequestError,
 } from "../../../Services/Interfaces/Contact";
 
 interface ContactFormProps {
   data?: Contact;
   translations: string;
+  errors?: ContactRequestError;
   submitFn: (data: Partial<ContactRequestBody>) => void;
   backToListFn: () => void;
 }
@@ -16,6 +19,7 @@ interface ContactFormProps {
 export function ContactForm({
   data,
   translations,
+  errors,
   submitFn,
   backToListFn,
 }: ContactFormProps) {
@@ -83,6 +87,8 @@ export function ContactForm({
               required
               ref={email}
             />
+
+            {errors && <ErrorBox errors={errors.errors} field="email" />}
           </Form.Group>
 
           <Form.Group className="mb-3">

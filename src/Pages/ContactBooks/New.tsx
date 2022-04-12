@@ -1,12 +1,18 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import ContactBooksService from "../../Services/ContactBooksService";
-import { ContactBookRequestBody } from "../../Services/Interfaces/ContactBook";
+import {
+  ContactBookRequestBody,
+  ContactBookRequestError,
+} from "../../Services/Interfaces/ContactBook";
 import { ContactBookForm } from "./Components/Form";
 
 export function ContactBookNew() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [errors, setErrors] = useState<ContactBookRequestError>();
+
   const TRANSLATIONS: string = "contactBooksNew";
 
   const backToHome = () => {
@@ -14,9 +20,13 @@ export function ContactBookNew() {
   };
 
   const addContactBook = async (data: ContactBookRequestBody) => {
-    const response = await ContactBooksService.create(data);
-    console.log(response);
-    backToHome();
+    try {
+      await ContactBooksService.create(data);
+
+      backToHome();
+    } catch (errors) {
+      setErrors(errors as ContactBookRequestError);
+    }
   };
 
   return (
@@ -27,6 +37,7 @@ export function ContactBookNew() {
         translations={TRANSLATIONS}
         submitFn={addContactBook}
         backFn={backToHome}
+        errors={errors}
       />
     </div>
   );

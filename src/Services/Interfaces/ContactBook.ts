@@ -33,3 +33,9 @@ export interface ContactBookWithContacts {
 export interface ContactBookRequestBody {
   name: string;
 }
+
+export interface ContactBookRequestError {
+  errors: {
+    name: Array<{ error: string; value: string }>;
+  };
+}

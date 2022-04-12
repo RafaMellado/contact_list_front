@@ -44,7 +44,7 @@ describe(`<${ContactBookIndex.name} />`, () => {
     expect(component.asFragment()).toMatchSnapshot();
   });
 
-  test.only("add btn redirects to add contact book page", () => {
+  test("add btn redirects to add contact book page", () => {
     let component!: RenderResult;
 
     act(() => {

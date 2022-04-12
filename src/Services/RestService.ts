@@ -1,8 +1,16 @@
 import RestInterceptor from "./Interceptors/RestInterceptor";
 import * as qs from "qs";
+import Cookies from "universal-cookie";
+
+const authorizationToken: () => string = () => {
+  const cookies = new Cookies();
+
+  return String(cookies.get("contact-list-user")?.token);
+};
 
 const headers = {
   "Content-Type": "application/json",
+  Authorization: authorizationToken(),
 };
 
 class RestService {
@@ -45,7 +53,13 @@ class RestService {
 
     RestInterceptor.interceptor();
 
-    return await response.json();
+    const json = await response.json();
+
+    if (response.status === 422) {
+      return Promise.reject(json);
+    }
+
+    return json;
   }
 
   async update<T>(path: string, id: number, requestData: object): Promise<T> {
@@ -58,7 +72,13 @@ class RestService {
       }
     );
 
-    return await response.json();
+    const json = await response.json();
+
+    if (response.status === 422) {
+      return Promise.reject(json);
+    }
+
+    return json;
   }
 
   async delete<T>(path: string, id: number): Promise<Response> {
@@ -69,6 +89,10 @@ class RestService {
         headers: headers,
       }
     );
+
+    if (response.status === 422) {
+      return Promise.reject({ errors: await response.json() });
+    }
 
     return await response;
   }

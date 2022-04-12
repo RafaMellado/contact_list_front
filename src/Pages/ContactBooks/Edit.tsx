@@ -5,11 +5,13 @@ import ContactBooksService from "../../Services/ContactBooksService";
 import {
   ContactBook,
   ContactBookRequestBody,
+  ContactBookRequestError,
 } from "../../Services/Interfaces/ContactBook";
 import { ContactBookForm } from "./Components/Form";
 
 export function ContactBookEdit() {
   const [contactBook, setContactBook] = useState<ContactBook>();
+  const [errors, setErrors] = useState<ContactBookRequestError>();
 
   const { id } = useParams();
   const { t } = useTranslation();
@@ -22,11 +24,13 @@ export function ContactBookEdit() {
   };
 
   const editContactBook = async (data: ContactBookRequestBody) => {
-    await ContactBooksService.update(Number(id), data).then((response) =>
-      setContactBook(response)
-    );
+    try {
+      await ContactBooksService.update(Number(id), data);
 
-    backToHome();
+      backToHome();
+    } catch (errors) {
+      setErrors(errors as ContactBookRequestError);
+    }
   };
 
   useEffect(() => {
@@ -46,6 +50,7 @@ export function ContactBookEdit() {
         item={contactBook}
         submitFn={editContactBook}
         backFn={backToHome}
+        errors={errors}
       />
     </div>
   );

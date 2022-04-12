@@ -1,12 +1,15 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { ErrorBox } from "../../Components/ErrorBox";
 import AuthenticationService from "../../Services/AuthenticationService";
+import { SignUpError } from "../../Services/Interfaces/SignUp";
 
 export function SignUp() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [errors, setErrors] = useState<SignUpError>();
 
   const TRANSLATIONS = "signUp";
 
@@ -22,14 +25,18 @@ export function SignUp() {
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    await AuthenticationService.signUp({
-      username: String(username?.current?.value),
-      email: String(email?.current?.value),
-      password: String(password?.current?.value),
-      password_confirmation: String(passwordConfirmation?.current?.value),
-    });
+    try {
+      await AuthenticationService.signUp({
+        username: String(username?.current?.value),
+        email: String(email?.current?.value),
+        password: String(password?.current?.value),
+        password_confirmation: String(passwordConfirmation?.current?.value),
+      });
 
-    backToLogin();
+      backToLogin();
+    } catch (errors) {
+      setErrors(errors as SignUpError);
+    }
   };
 
   return (
@@ -43,6 +50,9 @@ export function SignUp() {
                 as="input"
                 type="text"
                 placeholder={t<string>(`${TRANSLATIONS}.username`)}
+                minLength={6}
+                maxLength={20}
+                required
                 ref={username}
               />
             </Form.Group>
@@ -51,10 +61,13 @@ export function SignUp() {
               <Form.Label>{t<string>(`${TRANSLATIONS}.email`)}</Form.Label>
               <Form.Control
                 as="input"
-                type="text"
+                type="email"
                 placeholder={t<string>(`${TRANSLATIONS}.email`)}
+                required
                 ref={email}
               />
+
+              {errors && <ErrorBox errors={errors.errors} field="email" />}
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -63,6 +76,8 @@ export function SignUp() {
                 as="input"
                 type="password"
                 placeholder={t<string>(`${TRANSLATIONS}.password`)}
+                minLength={6}
+                required
                 ref={password}
               />
             </Form.Group>
@@ -75,8 +90,16 @@ export function SignUp() {
                 as="input"
                 type="password"
                 placeholder={t<string>(`${TRANSLATIONS}.passwordConfirmation`)}
+                required
                 ref={passwordConfirmation}
               />
+
+              {errors && (
+                <ErrorBox
+                  errors={errors.errors}
+                  field="password_confirmation"
+                />
+              )}
             </Form.Group>
 
             <div className="d-flex justify-content-between">

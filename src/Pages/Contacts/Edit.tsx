@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import ContactsService from "../../Services/ContactsService";
-import { Contact, ContactRequestBody } from "../../Services/Interfaces/Contact";
+import {
+  Contact,
+  ContactRequestBody,
+  ContactRequestError,
+} from "../../Services/Interfaces/Contact";
 import { ContactForm } from "./Components/Form";
 
 export function ContactEdit() {
@@ -11,6 +15,7 @@ export function ContactEdit() {
   const { id } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [errors, setErrors] = useState<ContactRequestError>();
 
   const TRANSLATIONS: string = "contactsEdit";
 
@@ -24,9 +29,13 @@ export function ContactEdit() {
       contact_book_id: Number(contact?.contact_book_id),
     };
 
-    await ContactsService.update(Number(id), newData as ContactRequestBody);
+    try {
+      await ContactsService.update(Number(id), newData as ContactRequestBody);
 
-    backToList();
+      backToList();
+    } catch (errors) {
+      setErrors(errors as ContactRequestError);
+    }
   };
 
   useEffect(() => {
@@ -44,6 +53,7 @@ export function ContactEdit() {
       <ContactForm
         data={contact}
         translations={TRANSLATIONS}
+        errors={errors}
         submitFn={editContact}
         backToListFn={backToList}
       />

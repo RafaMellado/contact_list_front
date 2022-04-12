@@ -1,10 +1,12 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import AuthenticationService from "../../Services/AuthenticationService";
+import { LoginError } from "../../Services/Interfaces/Login";
 
 export function Login() {
   const { t } = useTranslation();
+  const [errors, setErrors] = useState<LoginError>();
 
   const TRANSLATIONS: string = "login";
 
@@ -14,10 +16,14 @@ export function Login() {
   const login = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await AuthenticationService.login({
-      email: String(email?.current?.value),
-      password: String(password?.current?.value),
-    });
+    try {
+      await AuthenticationService.login({
+        email: String(email?.current?.value),
+        password: String(password?.current?.value),
+      });
+    } catch (errors) {
+      setErrors(errors as LoginError);
+    }
   };
 
   return (
@@ -47,6 +53,12 @@ export function Login() {
                 ref={password}
               />
             </Form.Group>
+
+            {errors?.error && (
+              <div className="text-danger my-2">
+                <span>{t<string>("errors.login")}</span>
+              </div>
+            )}
 
             <Button variant="primary" type="submit">
               {t<string>(`${TRANSLATIONS}.submit`)}

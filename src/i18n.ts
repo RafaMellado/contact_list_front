@@ -1,5 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import genericTranslation from "./Translations/en.json";
 import layoutHeaderTranslation from "./Translations/layout/header.en.json";
 import loginTranslation from "./Translations/authorization/login.en.json";
 import signUpTranslation from "./Translations/authorization/signUp.en.json";
@@ -19,6 +20,7 @@ i18n
     resources: {
       en: {
         translation: {
+          ...genericTranslation,
           ...layoutHeaderTranslation,
           ...loginTranslation,
           ...signUpTranslation,

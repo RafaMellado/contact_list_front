@@ -40,9 +40,11 @@ export function ContactBookShow() {
   };
 
   const deleteContact = async (id: number) => {
-    await ContactsService.delete(id);
+    try {
+      await ContactsService.delete(id);
 
-    reassignContacts(id);
+      reassignContacts(id);
+    } catch (error) {}
   };
 
   const reassignContacts = (deletedId: number) => {
