@@ -49,6 +49,7 @@ export function SignUp() {
               <Form.Control
                 as="input"
                 type="text"
+                data-testid="sign-up-username"
                 placeholder={t<string>(`${TRANSLATIONS}.username`)}
                 minLength={6}
                 maxLength={20}
@@ -62,6 +63,7 @@ export function SignUp() {
               <Form.Control
                 as="input"
                 type="email"
+                data-testid="sign-up-email"
                 placeholder={t<string>(`${TRANSLATIONS}.email`)}
                 required
                 ref={email}
@@ -75,6 +77,7 @@ export function SignUp() {
               <Form.Control
                 as="input"
                 type="password"
+                data-testid="sign-up-password"
                 placeholder={t<string>(`${TRANSLATIONS}.password`)}
                 minLength={6}
                 required
@@ -89,6 +92,7 @@ export function SignUp() {
               <Form.Control
                 as="input"
                 type="password"
+                data-testid="sign-up-password-confirmation"
                 placeholder={t<string>(`${TRANSLATIONS}.passwordConfirmation`)}
                 required
                 ref={passwordConfirmation}
@@ -110,7 +114,12 @@ export function SignUp() {
               >
                 {t<string>(`${TRANSLATIONS}.back`)}
               </Button>
-              <Button className="ms-2 w-100" variant="primary" type="submit">
+              <Button
+                data-testid="sign-up-submit"
+                className="ms-2 w-100"
+                variant="primary"
+                type="submit"
+              >
                 {t<string>(`${TRANSLATIONS}.submit`)}
               </Button>
             </div>

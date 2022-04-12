@@ -39,6 +39,7 @@ export function Login() {
               <Form.Control
                 as="input"
                 type="email"
+                data-testid="login-email"
                 placeholder={t<string>(`${TRANSLATIONS}.email`)}
                 ref={email}
               />
@@ -49,6 +50,7 @@ export function Login() {
               <Form.Control
                 as="input"
                 type="password"
+                data-testid="login-password"
                 placeholder={t<string>(`${TRANSLATIONS}.password`)}
                 ref={password}
               />
@@ -60,7 +62,7 @@ export function Login() {
               </div>
             )}
 
-            <Button variant="primary" type="submit">
+            <Button data-testid="login-submit" variant="primary" type="submit">
               {t<string>(`${TRANSLATIONS}.submit`)}
             </Button>
           </Form>

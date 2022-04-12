@@ -24,6 +24,7 @@ exports[`<Login /> renders correctly the component 1`] = `
             </label>
             <input
               class="form-control"
+              data-testid="login-email"
               placeholder="login.email"
               type="email"
             />
@@ -38,12 +39,14 @@ exports[`<Login /> renders correctly the component 1`] = `
             </label>
             <input
               class="form-control"
+              data-testid="login-password"
               placeholder="login.password"
               type="password"
             />
           </div>
           <button
             class="btn btn-primary"
+            data-testid="login-submit"
             type="submit"
           >
             login.submit
