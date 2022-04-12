@@ -14,8 +14,14 @@ export function Home() {
   const TRANSLATIONS: string = "contactBooksIndex";
 
   useEffect(() => {
-    ContactBooksService.index().then((response) => setContactBooks(response));
+    getItems();
   }, []);
+
+  const getItems = (params = {}) => {
+    ContactBooksService.index(params).then((response) =>
+      setContactBooks(response)
+    );
+  };
 
   const addContactBook = () => {
     navigate("/contact-book/new");
@@ -47,6 +53,15 @@ export function Home() {
         <Button className="mt-md-0 mt-2" onClick={addContactBook}>
           {t<string>(`${TRANSLATIONS}.addOther`)}
         </Button>
+      </div>
+
+      <div className="mb-4">
+        <input
+          placeholder={t<string>(`${TRANSLATIONS}.search`)}
+          onChange={(event) =>
+            getItems({ filter: { name: event.target.value } })
+          }
+        ></input>
       </div>
 
       {contactBooks.map((item: ContactBook) => {

@@ -1,11 +1,18 @@
 import RestInterceptor from "./Interceptors/RestInterceptor";
+import * as qs from "qs";
 
 const headers = {
   "Content-Type": "application/json",
 };
+
 class RestService {
-  async index<T>(path: string): Promise<T> {
-    const response = await fetch(`${process.env.REACT_APP_API_HOST}${path}`, {
+  async index<T>(path: string, params: object): Promise<T> {
+    const newPath = this.convertPath(
+      `${process.env.REACT_APP_API_HOST}${path}`,
+      params
+    );
+
+    const response = await fetch(newPath, {
       method: "GET",
       headers: headers,
     });
@@ -51,8 +58,6 @@ class RestService {
       }
     );
 
-    RestInterceptor.interceptor();
-
     return await response.json();
   }
 
@@ -65,9 +70,15 @@ class RestService {
       }
     );
 
-    RestInterceptor.interceptor();
-
     return await response;
+  }
+
+  convertPath(path: string, params: object) {
+    if (Object.keys(params).length) {
+      return `${path}?${qs.stringify(params)}`;
+    }
+
+    return path;
   }
 }
 

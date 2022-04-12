@@ -6,8 +6,8 @@ import {
 import ContactBooksRepository from "./Repository/ContactBooksRepository";
 
 class ContactBooksService {
-  index(): Promise<ContactBook[]> {
-    return ContactBooksRepository.index();
+  index(params: object): Promise<ContactBook[]> {
+    return ContactBooksRepository.index(params);
   }
 
   show(id: number): Promise<ContactBookWithContacts> {

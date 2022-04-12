@@ -6,6 +6,10 @@ import {
 import ContactsRepository from "./Repository/ContactsRepository";
 
 class ContactsService {
+  index(params: object): Promise<Contact[]> {
+    return ContactsRepository.index(params);
+  }
+
   show(id: number): Promise<ContactWithContactHistories> {
     return ContactsRepository.show(id);
   }

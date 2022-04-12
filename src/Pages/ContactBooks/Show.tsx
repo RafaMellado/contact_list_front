@@ -54,6 +54,15 @@ export function ContactBookShow() {
     setContactBook(updatedContactBook as ContactBookWithContacts);
   };
 
+  const getContacts = (params = {}) => {
+    ContactsService.index(params).then((response) =>
+      setContactBook({
+        ...contactBook,
+        contacts: response,
+      } as ContactBookWithContacts)
+    );
+  };
+
   return (
     <Row>
       <Col>
@@ -72,6 +81,15 @@ export function ContactBookShow() {
           <Button onClick={addContact}>
             {t<string>(`${TRANSLATIONS}.addContactBtn`)}
           </Button>
+        </div>
+
+        <div className="mb-4">
+          <input
+            placeholder={t<string>(`${TRANSLATIONS}.search`)}
+            onChange={(event) =>
+              getContacts({ filter: { fullname: event.target.value } })
+            }
+          />
         </div>
 
         <Row>

@@ -17,6 +17,7 @@
     "fetch-intercept": "^2.4.0",
     "i18next": "^21.6.14",
     "lodash": "^4.17.21",
+    "qs": "^6.10.3",
     "react": "^18.0.0",
     "react-bootstrap": "^2.2.3",
     "react-dom": "^18.0.0",

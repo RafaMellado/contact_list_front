@@ -5,6 +5,7 @@
       "title": "Currently, you don't added any contact book.",
       "description": "Click on this card to add the first one!"
     },
-    "addOther": "Add new contact book"
+    "addOther": "Add new contact book",
+    "search": "Search"
   }
 }

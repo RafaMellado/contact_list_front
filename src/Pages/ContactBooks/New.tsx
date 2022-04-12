@@ -14,8 +14,8 @@ export function ContactBookNew() {
   };
 
   const addContactBook = async (data: ContactBookRequestBody) => {
-    await ContactBooksService.create(data);
-
+    const response = await ContactBooksService.create(data);
+    console.log(response);
     backToHome();
   };
 

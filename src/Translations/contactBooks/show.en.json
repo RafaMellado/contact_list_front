@@ -1,9 +1,10 @@
 {
   "contactBooksShow": {
-    "title_zero": "Currently, you don't add any contact :(",
+    "title_zero": "Currently, we don't find any contact :(",
     "title": "Contacts from the '{{name}}' Contact Book",
     "contacts": "Contacts",
     "backBtn": "Back to Contact Book List",
-    "addContactBtn": "Add new contact"
+    "addContactBtn": "Add new contact",
+    "search": "Search"
   }
 }

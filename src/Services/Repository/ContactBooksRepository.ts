@@ -8,9 +8,10 @@ import {
 import RestService from "../RestService";
 
 class ContactBookRepository {
-  async index(): Promise<Array<ContactBook>> {
+  async index(params: object): Promise<Array<ContactBook>> {
     const contactBooks = await RestService.index<ContactBookDTO[]>(
-      "/contact_books"
+      "/contact_books",
+      params
     );
 
     return contactBooks.map((item): ContactBook => this.contactBook(item));
