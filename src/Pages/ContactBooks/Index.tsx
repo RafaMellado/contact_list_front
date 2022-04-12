@@ -6,7 +6,7 @@ import { ContactBook } from "../../Services/Interfaces/ContactBook";
 import ContactBooksService from "../../Services/ContactBooksService";
 import { ContactBookCard } from "../../Components/ContactBookCard";
 
-export function Home() {
+export function ContactBookIndex() {
   const [contactBooks, setContactBooks] = useState<ContactBook[]>([]);
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -17,10 +17,10 @@ export function Home() {
     getItems();
   }, []);
 
-  const getItems = (params = {}) => {
-    ContactBooksService.index(params).then((response) =>
-      setContactBooks(response)
-    );
+  const getItems = async (params = {}) => {
+    const response = await ContactBooksService.index(params);
+
+    setContactBooks(response);
   };
 
   const addContactBook = () => {
@@ -50,7 +50,11 @@ export function Home() {
       <div className="d-flex justify-content-between align-items-center flex-column flex-md-row mb-5">
         <h2>{t<string>(`${TRANSLATIONS}.title`)}</h2>
 
-        <Button className="mt-md-0 mt-2" onClick={addContactBook}>
+        <Button
+          className="mt-md-0 mt-2"
+          data-testid="contact-book-add-btn"
+          onClick={addContactBook}
+        >
           {t<string>(`${TRANSLATIONS}.addOther`)}
         </Button>
       </div>
@@ -74,6 +78,7 @@ export function Home() {
             md={3}
             key={id}
             onClick={() => goToContactBook(id)}
+            data-testid={`contact-book-${id}`}
             className="mb-4"
           >
             <ContactBookCard

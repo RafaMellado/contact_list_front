@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Content /> renders correctly the component 1`] = `
+<DocumentFragment>
+  <div
+    class="content"
+  >
+    <div>
+      test
+    </div>
+  </div>
+</DocumentFragment>
+`;

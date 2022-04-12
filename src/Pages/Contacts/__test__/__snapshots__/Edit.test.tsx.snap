@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContactEdit /> renders correctly the component 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-column align-items-center"
+  >
+    <h2
+      class="mb-4"
+    >
+      contactsEdit.title
+    </h2>
+    <div
+      class="form card"
+    >
+      <div
+        class="card-body"
+      >
+        <form
+          class=""
+        >
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.givenname
+            </label>
+            <input
+              class="form-control"
+              maxlength="24"
+              minlength="2"
+              placeholder="contactsEdit.givenname"
+              required=""
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.surname
+            </label>
+            <input
+              class="form-control"
+              maxlength="24"
+              minlength="2"
+              placeholder="contactsEdit.surname"
+              required=""
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.email
+            </label>
+            <input
+              class="form-control"
+              placeholder="contactsEdit.email"
+              required=""
+              type="email"
+              value=""
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.phone
+            </label>
+            <input
+              class="form-control"
+              maxlength="12"
+              placeholder="contactsEdit.phone"
+              required=""
+              type="tel"
+              value=""
+            />
+          </div>
+          <div
+            class="d-flex justify-content-between"
+          >
+            <button
+              class="w-100 btn btn-secondary"
+              type="button"
+            >
+              contactsEdit.backBtn
+            </button>
+            <button
+              class="w-100 ms-3 btn btn-primary"
+              type="submit"
+            >
+              contactsEdit.submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

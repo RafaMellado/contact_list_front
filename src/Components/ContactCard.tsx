@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import { Contact } from "../Services/Interfaces/Contact";
 
-interface ContactCardProps {
+export interface ContactCardProps {
   item: Contact;
   children?: React.ReactChild;
 }

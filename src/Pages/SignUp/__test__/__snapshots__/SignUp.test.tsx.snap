@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUp /> renders correctly the component 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex justify-content-center"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="card-body"
+      >
+        <form
+          class=""
+        >
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              signUp.username
+            </label>
+            <input
+              class="form-control"
+              placeholder="signUp.username"
+              type="text"
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              signUp.email
+            </label>
+            <input
+              class="form-control"
+              placeholder="signUp.email"
+              type="text"
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              signUp.password
+            </label>
+            <input
+              class="form-control"
+              placeholder="signUp.password"
+              type="password"
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              signUp.passwordConfirmation
+            </label>
+            <input
+              class="form-control"
+              placeholder="signUp.passwordConfirmation"
+              type="password"
+            />
+          </div>
+          <div
+            class="d-flex justify-content-between"
+          >
+            <button
+              class="w-100 btn btn-secondary"
+              type="button"
+            >
+              signUp.back
+            </button>
+            <button
+              class="ms-2 w-100 btn btn-primary"
+              type="submit"
+            >
+              signUp.submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

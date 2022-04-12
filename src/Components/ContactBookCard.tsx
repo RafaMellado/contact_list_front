@@ -5,7 +5,7 @@ import {
   BsFillJournalBookmarkFill,
 } from "react-icons/bs";
 
-interface ContactBookCardProps {
+export interface ContactBookCardProps {
   name: string;
   editFn: () => void;
   deleteFn: () => void;
@@ -28,6 +28,7 @@ export function ContactBookCard({
           <BsPencilSquare
             role="button"
             className="platform-card-icon"
+            data-testid="contact-book-card-edit-icon"
             onClick={(event) => {
               event.stopPropagation();
 
@@ -38,6 +39,7 @@ export function ContactBookCard({
           <BsFillTrashFill
             className="ms-2 platform-card-icon"
             role="button"
+            data-testid="contact-book-card-delete-icon"
             onClick={(event) => {
               event.stopPropagation();
 

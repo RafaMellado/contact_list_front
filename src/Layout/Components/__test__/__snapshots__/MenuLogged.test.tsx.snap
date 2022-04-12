@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MenuLogged /> renders correctly the component 1`] = `
+<DocumentFragment>
+  <button
+    class="me-3 btn btn-primary"
+    data-testid="menu-logged-logout-btn"
+    type="button"
+  >
+    contactHistory.logout
+  </button>
+</DocumentFragment>
+`;

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { extractDateAndTimeFromDate } from "../Helpers/date";
 import { ContactHistory } from "../Services/Interfaces/ContactHistory";
 
-interface ContactHistoryCardProps {
+export interface ContactHistoryCardProps {
   item: ContactHistory;
   translations: string;
 }

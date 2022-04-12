@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContactHistoryCard /> renders correctly the component 1`] = `
+<DocumentFragment>
+  <div
+    class="mb-3 card"
+  >
+    <div
+      class="card-body"
+    >
+      <h4>
+        contactHistory.historyDay
+      </h4>
+      <p>
+        First Second
+      </p>
+      <p>
+        Test email
+      </p>
+      <p>
+        Test phone
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

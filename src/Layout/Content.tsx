@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Styles/Content.css";
 
-interface ContentProps {
+export interface ContentProps {
   children: React.ReactChild;
 }
 

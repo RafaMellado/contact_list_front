@@ -1,7 +1,7 @@
 import { Routes as Switch, Route } from "react-router-dom";
 import { Login } from "../Pages/Login/Login";
 import { SignUp } from "../Pages/SignUp/SignUp";
-import { Home } from "../Pages/ContactBooks/Index";
+import { ContactBookIndex } from "../Pages/ContactBooks/Index";
 import { ContactBookNew } from "../Pages/ContactBooks/New";
 import { ContactBookShow } from "../Pages/ContactBooks/Show";
 import { ContactBookEdit } from "../Pages/ContactBooks/Edit";
@@ -24,7 +24,10 @@ export function Routes() {
         element={<PublicRoute RouteComponent={SignUp} />}
       />
 
-      <Route path="/home" element={<PrivateRoute RouteComponent={Home} />} />
+      <Route
+        path="/home"
+        element={<PrivateRoute RouteComponent={ContactBookIndex} />}
+      />
 
       <Route
         path="/contact-book/new"

@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { Contact } from "../Services/Interfaces/Contact";
 
-interface ContactBookCardProps {
+export interface ContactBookContactCardProps {
   item: Contact;
   cardFn: () => void;
   editFn: () => void;
@@ -18,10 +18,14 @@ export function ContactBookContactCard({
   cardFn,
   editFn,
   deleteFn,
-}: ContactBookCardProps) {
+}: ContactBookContactCardProps) {
   return (
     <>
-      <Card className="platform-card" onClick={() => cardFn()}>
+      <Card
+        data-testid="contact-book-contact-card"
+        className="platform-card"
+        onClick={() => cardFn()}
+      >
         <Card.Body className="d-flex justify-content-between flex-column">
           <div className="d-flex flex-column justify-content-between">
             <div className="d-flex justify-content-between align-items-center">
@@ -43,6 +47,7 @@ export function ContactBookContactCard({
             <BsPencilSquare
               role="button"
               className="platform-card-icon"
+              data-testid="contact-book-contact-card-edit-icon"
               onClick={(event) => {
                 event.stopPropagation();
 
@@ -52,6 +57,7 @@ export function ContactBookContactCard({
 
             <BsFillTrashFill
               className="ms-2 platform-card-icon"
+              data-testid="contact-book-contact-card-delete-icon"
               role="button"
               onClick={(event) => {
                 event.stopPropagation();

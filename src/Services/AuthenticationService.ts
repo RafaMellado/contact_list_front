@@ -11,7 +11,7 @@ class AuthenticationService {
     if (response.token) {
       this.setAuthCookie(response);
 
-      window.location.href = "/home";
+      window.location.reload();
     }
   }
 
