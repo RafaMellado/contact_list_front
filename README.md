@@ -4,6 +4,12 @@ This project is an App that allows you to manage your contacts in differents con
 
 You can create contact contact books, create contacts within these contact books and show the updates history of each contact
 
+## Requirements
+
+- React 18
+- TypeScript 4.4.2
+- NodeJS 17.9.0
+
 ## How to start
 
 In the project directory, you need to do some steps before:
