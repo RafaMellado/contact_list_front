@@ -1,6 +1,6 @@
-# Contact List APP
+# Contact List APP - Client
 
-This project is a App that allows you to manage your contacts in differents contact books.
+This project is an App that allows you to manage your contacts in differents contact books.
 
 You can create contact contact books, create contacts within these contact books and show the updates history of each contact
 
@@ -51,11 +51,11 @@ This project has enabled the strict mode with TypeScript.
 
 ## Dependencies used in this project
 
-`[dovenv](https://github.com/motdotla/dotenv)`: To manage enviroment variables
-`[fetch-intercept](https://github.com/werk85/fetch-intercept)`: Interceptor library to intercept native fetch method for requests
-`[qs](https://github.com/ljharb/qs)`: To parse and stringify objects to querystring
-`[universal-cookie](https://github.com/reactivestack/cookies)`: To manage browser cookies
-`[react-bootstrap](https://getbootstrap.com/)`: Styling library
-`[react-icons](https://github.com/react-icons/react-icons)`: Library of icons
-`[react-i18next](https://github.com/i18next/i18next)`: To manage translations
-`[react-router-dom](https://github.com/ljharb/qs)`
+- [dovenv](https://github.com/motdotla/dotenv): To manage enviroment variables
+- [fetch-intercept](https://github.com/werk85/fetch-intercept): Interceptor library to intercept native fetch method for requests
+- [qs](https://github.com/ljharb/qs): To parse and stringify objects to querystring
+- [universal-cookie](https://github.com/reactivestack/cookies): To manage browser cookies
+- [react-bootstrap](https://getbootstrap.com/): Styling library
+- [react-icons](https://github.com/react-icons/react-icons): Library of icons
+- [react-i18next](https://github.com/i18next/i18next): To manage translations
+- [react-router-dom](https://github.com/ljharb/qs)
