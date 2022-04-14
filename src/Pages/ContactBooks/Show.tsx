@@ -3,12 +3,14 @@ import { Button, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import ContactBooksService from "../../Services/ContactBooksService";
-import { ContactBookWithContacts } from "../../Services/Interfaces/ContactBook";
+import { ContactBook } from "../../Services/Interfaces/ContactBook";
 import { ContactBookContactCard } from "../../Components/ContactBookContactCard";
 import ContactsService from "../../Services/ContactsService";
+import { Contact } from "../../Services/Interfaces/Contact";
 
 export function ContactBookShow() {
-  const [contactBook, setContactBook] = useState<ContactBookWithContacts>();
+  const [contactBook, setContactBook] = useState<ContactBook>();
+  const [contacts, setContacts] = useState<Contact[]>();
 
   const { id } = useParams();
   const { t } = useTranslation();
@@ -18,9 +20,8 @@ export function ContactBookShow() {
   const TRANSLATIONS: string = "contactBooksShow";
 
   useEffect(() => {
-    ContactBooksService.show(Number(id)).then((response) =>
-      setContactBook(response)
-    );
+    getContactBook();
+    getContacts();
   }, [id]);
 
   const addContact = () => {
@@ -48,20 +49,23 @@ export function ContactBookShow() {
   };
 
   const reassignContacts = (deletedId: number) => {
-    const updatedContactBook = {
-      ...contactBook,
-      contacts: contactBook?.contacts.filter((item) => item.id !== deletedId),
-    };
+    setContacts(contacts?.filter((item) => item.id !== deletedId));
+  };
 
-    setContactBook(updatedContactBook as ContactBookWithContacts);
+  const getContactBook = () => {
+    ContactBooksService.show(Number(id)).then((response) =>
+      setContactBook(response)
+    );
   };
 
   const getContacts = (params = {}) => {
-    ContactsService.index(params).then((response) =>
-      setContactBook({
-        ...contactBook,
-        contacts: response,
-      } as ContactBookWithContacts)
+    const filterParams = {
+      contact_book_id: id,
+      ...params,
+    };
+
+    ContactsService.index(filterParams).then((response) =>
+      setContacts(response)
     );
   };
 
@@ -76,7 +80,7 @@ export function ContactBookShow() {
           <h2>
             {t<string>(`${TRANSLATIONS}.title`, {
               name: contactBook?.name,
-              count: contactBook?.contacts.length,
+              count: Number(contacts?.length),
             })}
           </h2>
 
@@ -95,7 +99,7 @@ export function ContactBookShow() {
         </div>
 
         <Row>
-          {contactBook?.contacts.map((item) => {
+          {contacts?.map((item) => {
             return (
               <Col xs={12} sm={6} md={3} key={item.id}>
                 <ContactBookContactCard

@@ -1,8 +1,4 @@
-import {
-  ContactBook,
-  ContactBookRequestBody,
-  ContactBookWithContacts,
-} from "./Interfaces/ContactBook";
+import { ContactBook, ContactBookRequestBody } from "./Interfaces/ContactBook";
 import ContactBooksRepository from "./Repository/ContactBooksRepository";
 
 class ContactBooksService {
@@ -10,7 +6,7 @@ class ContactBooksService {
     return ContactBooksRepository.index(params);
   }
 
-  show(id: number): Promise<ContactBookWithContacts> {
+  show(id: number): Promise<ContactBook> {
     return ContactBooksRepository.show(id);
   }
 
