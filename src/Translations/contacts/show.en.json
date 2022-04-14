@@ -3,6 +3,9 @@
     "backBtn": "Back to Contact Book",
     "editContact": "Edit contact",
     "history": "History",
-    "historyDay": "Data on day {{date}} at time {{time}}"
+    "historyDay": "Data on day {{date}} at time {{time}}",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone number"
   }
 }

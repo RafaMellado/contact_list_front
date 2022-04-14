@@ -12,6 +12,7 @@ describe(`<${ContactCard.name} />`, () => {
       phone: "Test phone",
       contact_book_id: 1,
     },
+    translations: "contactsShow",
   };
 
   const factoryComponent = (props: ContactCardProps = contactCardProps) =>

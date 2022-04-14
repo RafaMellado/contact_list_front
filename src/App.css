@@ -21,6 +21,7 @@
 
 .platform-card {
   min-height: 10rem;
+  height: 100%;
 }
 
 .platform-card:hover {

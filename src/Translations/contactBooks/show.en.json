@@ -5,6 +5,8 @@
     "contacts": "Contacts",
     "backBtn": "Back to Contact Book List",
     "addContactBtn": "Add new contact",
-    "search": "Search"
+    "search": "Search",
+    "email": "Email",
+    "phone": "Phone number"
   }
 }

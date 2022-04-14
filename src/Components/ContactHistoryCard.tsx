@@ -24,10 +24,22 @@ export function ContactHistoryCard({
             time,
           })}
         </h4>
+
+        <small className="text-secondary">
+          {t<string>(`${translations}.name`)}
+        </small>
         <p>
           {item.givenname} {item.surname}
         </p>
+
+        <small className="text-secondary">
+          {t<string>(`${translations}.email`)}
+        </small>
         <p>{item.email}</p>
+
+        <small className="text-secondary">
+          {t<string>(`${translations}.email`)}
+        </small>
         <p>{item.phone}</p>
       </Card.Body>
     </Card>

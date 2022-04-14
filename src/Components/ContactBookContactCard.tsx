@@ -1,4 +1,5 @@
 import { Card } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import {
   BsFillJournalBookmarkFill,
   BsFillTrashFill,
@@ -8,6 +9,7 @@ import { Contact } from "../Services/Interfaces/Contact";
 
 export interface ContactBookContactCardProps {
   item: Contact;
+  translations: string;
   cardFn: () => void;
   editFn: () => void;
   deleteFn: () => void;
@@ -15,10 +17,13 @@ export interface ContactBookContactCardProps {
 
 export function ContactBookContactCard({
   item,
+  translations,
   cardFn,
   editFn,
   deleteFn,
 }: ContactBookContactCardProps) {
+  const { t } = useTranslation();
+
   return (
     <>
       <Card
@@ -38,7 +43,14 @@ export function ContactBookContactCard({
             </div>
 
             <div className="mt-4">
+              <small className="text-secondary">
+                {t<string>(`${translations}.email`)}
+              </small>
               <p className="mb-0">{item.email}</p>
+
+              <small className="mt-2 d-block text-secondary">
+                {t<string>(`${translations}.phone`)}
+              </small>
               <p className="mb-0">{item.phone}</p>
             </div>
           </div>

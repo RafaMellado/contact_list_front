@@ -12,6 +12,7 @@ describe(`<${ContactBookContactCard.name} />`, () => {
       phone: "Test phone",
       contact_book_id: 1,
     },
+    translations: "contactBooksShow",
     cardFn: jest.fn(),
     editFn: jest.fn(),
     deleteFn: jest.fn(),

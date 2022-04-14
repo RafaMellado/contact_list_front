@@ -31,9 +31,9 @@ export function ContactShow() {
 
   return (
     <Row>
-      <Col xs={12} md={6}>
+      <Col xs={12} md={6} className="mb-4">
         {contact && (
-          <ContactCard item={contact}>
+          <ContactCard item={contact} translations={TRANSLATIONS}>
             <>
               <Button
                 className="me-2"

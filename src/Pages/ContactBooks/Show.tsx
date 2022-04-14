@@ -78,7 +78,7 @@ export function ContactBookShow() {
           {t<string>(`${TRANSLATIONS}.backBtn`)}
         </Button>
 
-        <div className="d-flex align-items-center justify-content-between my-4">
+        <div className="d-flex align-items-center justify-content-between my-4 flex-column flex-md-row">
           <h2>
             {t<string>(`${TRANSLATIONS}.title`, {
               name: contactBook?.name,
@@ -86,7 +86,7 @@ export function ContactBookShow() {
             })}
           </h2>
 
-          <Button onClick={addContact}>
+          <Button className="mt-3 mt-md-0" onClick={addContact}>
             {t<string>(`${TRANSLATIONS}.addContactBtn`)}
           </Button>
         </div>
@@ -94,18 +94,17 @@ export function ContactBookShow() {
         <div className="mb-4">
           <input
             placeholder={t<string>(`${TRANSLATIONS}.search`)}
-            onChange={(event) =>
-              getContacts({ filter: { fullname: event.target.value } })
-            }
+            onChange={(event) => getContacts({ fullname: event.target.value })}
           />
         </div>
 
         <Row>
           {contacts?.map((item) => {
             return (
-              <Col xs={12} sm={6} md={3} key={item.id}>
+              <Col className="mb-4" xs={12} sm={6} md={3} key={item.id}>
                 <ContactBookContactCard
                   item={item}
+                  translations={TRANSLATIONS}
                   cardFn={() => goToContactShow(item.id)}
                   editFn={() => goToEditContact(item.id)}
                   deleteFn={() => deleteContact(item.id)}
