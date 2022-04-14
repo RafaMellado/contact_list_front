@@ -60,8 +60,10 @@ export function ContactBookShow() {
 
   const getContacts = (params = {}) => {
     const filterParams = {
-      contact_book_id: id,
-      ...params,
+      filter: {
+        contact_book_id: id,
+        ...params,
+      },
     };
 
     ContactsService.index(filterParams).then((response) =>
