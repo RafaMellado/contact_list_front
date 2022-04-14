@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# Contact List APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a App that allows you to manage your contacts in differents contact books.
 
-## Available Scripts
+You can create contact contact books, create contacts within these contact books and show the updates history of each contact
 
-In the project directory, you can run:
+## How to start
+
+In the project directory, you need to do some steps before:
+
+### `yarn install` or `npm install`
+
+With this command, you will install the dependencies of this project.
 
 ### `yarn start`
 
@@ -29,18 +35,27 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Other configuration
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the backend, you need to run the server of `contact_list_api` which is [here](https://github.com/RafaMellado/contact_list_api).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once this is done, you need to place in your `.env` file the following enviroment variables:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`REACT_APP_API_HOST="http://localhost:3000"`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If you run the server in other path or port, just change it
 
-## Learn More
+## Information for developers
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project has enabled the strict mode with TypeScript.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Dependencies used in this project
+
+`[dovenv](https://github.com/motdotla/dotenv)`: To manage enviroment variables
+`[fetch-intercept](https://github.com/werk85/fetch-intercept)`: Interceptor library to intercept native fetch method for requests
+`[qs](https://github.com/ljharb/qs)`: To parse and stringify objects to querystring
+`[universal-cookie](https://github.com/reactivestack/cookies)`: To manage browser cookies
+`[react-bootstrap](https://getbootstrap.com/)`: Styling library
+`[react-icons](https://github.com/react-icons/react-icons)`: Library of icons
+`[react-i18next](https://github.com/i18next/i18next)`: To manage translations
+`[react-router-dom](https://github.com/ljharb/qs)`
