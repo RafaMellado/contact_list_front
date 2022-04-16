@@ -11,12 +11,27 @@ exports[`<ContactHistoryCard /> renders correctly the component 1`] = `
       <h4>
         contactHistory.historyDay
       </h4>
+      <small
+        class="text-secondary"
+      >
+        contactHistory.name
+      </small>
       <p>
         First Second
       </p>
+      <small
+        class="text-secondary"
+      >
+        contactHistory.email
+      </small>
       <p>
         Test email
       </p>
+      <small
+        class="text-secondary"
+      >
+        contactHistory.email
+      </small>
       <p>
         Test phone
       </p>

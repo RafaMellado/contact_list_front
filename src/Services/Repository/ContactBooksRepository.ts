@@ -6,7 +6,7 @@ import {
 import RestService from "../RestService";
 
 class ContactBookRepository {
-  async index(params: object): Promise<Array<ContactBook>> {
+  async index(params: object = {}): Promise<Array<ContactBook>> {
     const contactBooks = await RestService.index<ContactBookDTO[]>(
       "/contact_books",
       params

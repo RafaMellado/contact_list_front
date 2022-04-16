@@ -12,7 +12,7 @@ import {
 import RestService from "../RestService";
 
 class ContactsRepository {
-  async index(params: object): Promise<Array<Contact>> {
+  async index(params: object = {}): Promise<Array<Contact>> {
     const contacts = await RestService.index<ContactDTO[]>("/contacts", params);
 
     return contacts.map((item): Contact => this.contact(item));

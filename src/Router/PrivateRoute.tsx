@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
 import AuthenticationService from "../Services/AuthenticationService";
 
-interface PrivateRouteProps {
-  RouteComponent: any;
+export interface PrivateRouteProps {
+  RouteComponent: React.FC;
 }
 
 export function PrivateRoute({ RouteComponent }: PrivateRouteProps) {

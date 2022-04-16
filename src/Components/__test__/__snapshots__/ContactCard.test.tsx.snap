@@ -11,12 +11,26 @@ exports[`<ContactCard /> renders correctly the component 1`] = `
       <h2>
         First Second
       </h2>
-      <h5>
-        Test email
-      </h5>
-      <h5>
-        Test phone
-      </h5>
+      <div
+        class="mb-4"
+      >
+        <small
+          class="text-secondary"
+        >
+          contactsShow.email
+        </small>
+        <h5>
+          Test email
+        </h5>
+        <small
+          class="text-secondary"
+        >
+          contactsShow.phone
+        </small>
+        <h5>
+          Test phone
+        </h5>
+      </div>
     </div>
   </div>
 </DocumentFragment>

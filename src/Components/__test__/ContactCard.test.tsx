@@ -2,6 +2,10 @@ import { ContactCard } from "../ContactCard";
 import { act, render } from "@testing-library/react";
 import type { ContactCardProps } from "../ContactCard";
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe(`<${ContactCard.name} />`, () => {
   const contactCardProps: ContactCardProps = {
     item: {

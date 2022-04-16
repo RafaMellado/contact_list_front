@@ -49,11 +49,21 @@ exports[`<ContactBookContactCard /> renders correctly the component 1`] = `
         <div
           class="mt-4"
         >
+          <small
+            class="text-secondary"
+          >
+            contactBooksShow.email
+          </small>
           <p
             class="mb-0"
           >
             Test email
           </p>
+          <small
+            class="mt-2 d-block text-secondary"
+          >
+            contactBooksShow.phone
+          </small>
           <p
             class="mb-0"
           >
