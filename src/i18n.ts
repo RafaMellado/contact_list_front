@@ -1,37 +1,25 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import genericTranslation from "./Translations/en.json";
-import layoutHeaderTranslation from "./Translations/layout/header.en.json";
-import loginTranslation from "./Translations/authorization/login.en.json";
-import signUpTranslation from "./Translations/authorization/signUp.en.json";
-import contactBookIndexTranslation from "./Translations/contactBooks/index.en.json";
-import contactBookNewTranslation from "./Translations/contactBooks/new.en.json";
-import contactBookShowTranslation from "./Translations/contactBooks/show.en.json";
-import contactBookEditTranslation from "./Translations/contactBooks/edit.en.json";
-import contactsEditTranslation from "./Translations/contacts/edit.en.json";
-import contactsNewTranslation from "./Translations/contacts/new.en.json";
-import contactsShowTranslation from "./Translations/contacts/show.en.json";
 
-// TODO: remove all imports and merge all files from Translations folder
+const context = require.context("./Translations", true, /.json$/);
+
+const translations = {};
+
+context.keys().forEach((key: any) => {
+  const fileName = key.replace("./", "");
+  const resource = require(`./Translations/${fileName}`);
+
+  Object.assign(translations, JSON.parse(JSON.stringify(resource)));
+});
+
 i18n
   .use(initReactI18next) // bind react-i18next to the instance
   .init({
+    lng: "en",
     fallbackLng: "en",
     resources: {
       en: {
-        translation: {
-          ...genericTranslation,
-          ...layoutHeaderTranslation,
-          ...loginTranslation,
-          ...signUpTranslation,
-          ...contactBookNewTranslation,
-          ...contactBookIndexTranslation,
-          ...contactBookShowTranslation,
-          ...contactsNewTranslation,
-          ...contactsShowTranslation,
-          ...contactsEditTranslation,
-          ...contactBookEditTranslation,
-        },
+        translation: translations,
       },
     },
   });
