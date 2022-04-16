@@ -3,10 +3,10 @@ import {
   ContactRequestBody,
   ContactWithContactHistories,
 } from "./Interfaces/Contact";
-import ContactsRepository from "./Repository/ContactsRepository";
+import ContactsRepository from "./Repositories/ContactsRepository";
 
 class ContactsService {
-  index(params: object): Promise<Contact[]> {
+  index(params: object = {}): Promise<Contact[]> {
     return ContactsRepository.index(params);
   }
 

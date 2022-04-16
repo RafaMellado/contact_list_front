@@ -1,8 +1,8 @@
 import { ContactBook, ContactBookRequestBody } from "./Interfaces/ContactBook";
-import ContactBooksRepository from "./Repository/ContactBooksRepository";
+import ContactBooksRepository from "./Repositories/ContactBooksRepository";
 
 class ContactBooksService {
-  index(params: object): Promise<ContactBook[]> {
+  index(params: object = {}): Promise<ContactBook[]> {
     return ContactBooksRepository.index(params);
   }
 

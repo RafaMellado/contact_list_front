@@ -1,8 +1,8 @@
 import Cookies from "universal-cookie";
 import { LoginRequestBody, LoginResponse } from "./Interfaces/Login";
 import { SignUpRequestBody, SignUpResponse } from "./Interfaces/SignUp";
-import LoginRepository from "./Repository/LoginRepository";
-import SignUpRepository from "./Repository/SignUpRepository";
+import LoginRepository from "./Repositories/LoginRepository";
+import SignUpRepository from "./Repositories/SignUpRepository";
 
 class AuthenticationService {
   async login(data: LoginRequestBody): Promise<void> {

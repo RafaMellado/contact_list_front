@@ -81,7 +81,7 @@ class RestService {
     return json;
   }
 
-  async delete<T>(path: string, id: number): Promise<Response> {
+  async delete(path: string, id: number): Promise<Response> {
     const response = await fetch(
       `${process.env.REACT_APP_API_HOST}${path}/${id}`,
       {
