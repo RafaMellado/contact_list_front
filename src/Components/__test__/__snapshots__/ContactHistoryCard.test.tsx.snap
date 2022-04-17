@@ -4,6 +4,7 @@ exports[`<ContactHistoryCard /> renders correctly the component 1`] = `
 <DocumentFragment>
   <div
     class="mb-3 card"
+    data-testid="contact-history-card"
   >
     <div
       class="card-body"

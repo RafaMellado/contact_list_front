@@ -7,10 +7,96 @@ exports[`<ContactShow /> renders correctly the component 1`] = `
   >
     <div
       class="mb-4 col-md-6 col-12"
-    />
+    >
+      <div
+        class="card"
+      >
+        <div
+          class="card-body"
+        >
+          <h2>
+            test surname test
+          </h2>
+          <div
+            class="mb-4"
+          >
+            <small
+              class="text-secondary"
+            >
+              contactsShow.email
+            </small>
+            <h5>
+              test@email.es
+            </h5>
+            <small
+              class="text-secondary"
+            >
+              contactsShow.phone
+            </small>
+            <h5>
+              12345
+            </h5>
+          </div>
+          <button
+            class="me-2 btn btn-primary"
+            data-testid="contact-show-back-btn"
+            type="button"
+          >
+            contactsShow.backBtn
+          </button>
+          <button
+            class="me-2 btn btn-primary"
+            data-testid="contact-show-edit-btn"
+            type="button"
+          >
+            contactsShow.editContact
+          </button>
+        </div>
+      </div>
+    </div>
     <div
       class="col-md-6 col-12"
-    />
+    >
+      <h2>
+        contactsShow.history
+      </h2>
+      <div
+        class="mb-3 card"
+        data-testid="contact-history-card"
+      >
+        <div
+          class="card-body"
+        >
+          <h4>
+            contactsShow.historyDay
+          </h4>
+          <small
+            class="text-secondary"
+          >
+            contactsShow.name
+          </small>
+          <p>
+            test surname test
+          </p>
+          <small
+            class="text-secondary"
+          >
+            contactsShow.email
+          </small>
+          <p>
+            test@email.es
+          </p>
+          <small
+            class="text-secondary"
+          >
+            contactsShow.email
+          </small>
+          <p>
+            12345
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

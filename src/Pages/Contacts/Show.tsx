@@ -18,8 +18,14 @@ export function ContactShow() {
   const TRANSLATIONS: string = "contactsShow";
 
   useEffect(() => {
-    ContactsService.show(Number(id)).then((response) => setContact(response));
+    getContacts();
   }, [id]);
+
+  const getContacts = async () => {
+    const response = await ContactsService.show(Number(id));
+
+    setContact(response);
+  };
 
   const backBtn = (id: number) => {
     navigate(`/contact-book/show/${id}`);
@@ -36,13 +42,18 @@ export function ContactShow() {
           <ContactCard item={contact} translations={TRANSLATIONS}>
             <>
               <Button
+                data-testid="contact-show-back-btn"
                 className="me-2"
                 onClick={() => backBtn(Number(contact.contact_book_id))}
               >
                 {t<string>(`${TRANSLATIONS}.backBtn`)}
               </Button>
 
-              <Button className="me-2" onClick={editContact}>
+              <Button
+                data-testid="contact-show-edit-btn"
+                className="me-2"
+                onClick={editContact}
+              >
                 {t<string>(`${TRANSLATIONS}.editContact`)}
               </Button>
             </>

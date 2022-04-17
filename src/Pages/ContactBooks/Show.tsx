@@ -52,13 +52,13 @@ export function ContactBookShow() {
     setContacts(contacts?.filter((item) => item.id !== deletedId));
   };
 
-  const getContactBook = () => {
-    ContactBooksService.show(Number(id)).then((response) =>
-      setContactBook(response)
-    );
+  const getContactBook = async () => {
+    const response = await ContactBooksService.show(Number(id));
+
+    setContactBook(response);
   };
 
-  const getContacts = (params = {}) => {
+  const getContacts = async (params = {}) => {
     const filterParams = {
       filter: {
         contact_book_id: id,
@@ -66,27 +66,35 @@ export function ContactBookShow() {
       },
     };
 
-    ContactsService.index(filterParams).then((response) =>
-      setContacts(response)
-    );
+    const response = await ContactsService.index(filterParams);
+
+    setContacts(response);
   };
 
   return (
     <Row>
       <Col>
-        <Button className="me-2" onClick={backBtn}>
+        <Button
+          data-testid="contact-book-show-back-btn"
+          className="me-2"
+          onClick={backBtn}
+        >
           {t<string>(`${TRANSLATIONS}.backBtn`)}
         </Button>
 
         <div className="d-flex align-items-center justify-content-between my-4 flex-column flex-md-row">
-          <h2>
+          <h2 data-testid="contact-book-show-title">
             {t<string>(`${TRANSLATIONS}.title`, {
               name: contactBook?.name,
               count: Number(contacts?.length),
             })}
           </h2>
 
-          <Button className="mt-3 mt-md-0" onClick={addContact}>
+          <Button
+            data-testid="contact-book-show-contact-btn"
+            className="mt-3 mt-md-0"
+            onClick={addContact}
+          >
             {t<string>(`${TRANSLATIONS}.addContactBtn`)}
           </Button>
         </div>

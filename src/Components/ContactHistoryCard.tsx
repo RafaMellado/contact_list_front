@@ -16,7 +16,7 @@ export function ContactHistoryCard({
   const { date, time } = extractDateAndTimeFromDate(item.created_at);
 
   return (
-    <Card className="mb-3">
+    <Card data-testid="contact-history-card" className="mb-3">
       <Card.Body>
         <h4>
           {t<string>(`${translations}.historyDay`, {
