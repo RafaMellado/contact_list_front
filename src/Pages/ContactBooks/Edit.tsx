@@ -33,18 +33,23 @@ export function ContactBookEdit() {
     }
   };
 
+  const getContactBook = async () => {
+    const response = await ContactBooksService.show(Number(id));
+
+    setContactBook(response);
+  };
+
   useEffect(() => {
-    ContactBooksService.show(Number(id)).then((response) =>
-      setContactBook(response)
-    );
+    getContactBook();
   }, [id]);
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h2 className="mb-4">
-        {t<string>(`${TRANSLATIONS}.title`, { name: contactBook?.name })}
-      </h2>
-
+      {contactBook?.name && (
+        <h2 data-testid="contact-book-edit-title" className="mb-4">
+          {t<string>(`${TRANSLATIONS}.title`, { name: contactBook.name })}
+        </h2>
+      )}
       <ContactBookForm
         translations={TRANSLATIONS}
         item={contactBook}

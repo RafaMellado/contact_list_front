@@ -1,5 +1,4 @@
 import { Login } from "../Login";
-import { useState as useStateMock } from "react";
 import AuthenticationService from "../../../Services/AuthenticationService";
 import { act, fireEvent, render, waitFor } from "@testing-library/react";
 
@@ -7,30 +6,19 @@ jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-jest.mock("../../../Services/AuthenticationService", () => ({
-  login: jest.fn(),
-}));
+jest.mock("../../../Services/AuthenticationService");
 
-jest.mock("react", () => ({
-  ...jest.requireActual("react"),
-  useState: jest.fn(),
-}));
-
-const setState = jest.fn();
+const mockedAuthenticationService = AuthenticationService as jest.Mocked<
+  typeof AuthenticationService
+>;
 
 describe(`<${Login.name} />`, () => {
   const factoryComponent = () => render(<Login />);
 
-  beforeEach(() => {
-    (useStateMock as jest.Mock).mockImplementation(() => [null, setState]);
-  });
-
   test("renders correctly the component", () => {
     const component = factoryComponent();
 
-    act(() => {
-      expect(component.asFragment()).toMatchSnapshot();
-    });
+    expect(component.asFragment()).toMatchSnapshot();
   });
 
   test("fill correctly and call login", () => {
@@ -51,7 +39,26 @@ describe(`<${Login.name} />`, () => {
 
       fireEvent.click(component.getByTestId("login-submit"));
 
-      expect(AuthenticationService.login).toHaveBeenCalled();
+      expect(mockedAuthenticationService.login).toHaveBeenCalledWith({
+        email: "test@email.com",
+        password: "abcdef",
+      });
     });
+  });
+
+  test("submit and show errors", async () => {
+    mockedAuthenticationService.login.mockRejectedValue({
+      error: "unauthorized",
+    });
+
+    const component = await factoryComponent();
+
+    fireEvent.click(component.getByTestId("login-submit"));
+
+    await waitFor(() => {
+      expect(component.queryByTestId("login-error")).toBeTruthy();
+    });
+
+    expect(component.asFragment()).toMatchSnapshot("errors");
   });
 });

@@ -1,7 +1,6 @@
 import { SignUp } from "../SignUp";
-import { act, fireEvent, render } from "@testing-library/react";
+import { act, fireEvent, render, waitFor } from "@testing-library/react";
 import { Router } from "react-router-dom";
-import { useState as useStateMock } from "react";
 import AuthenticationService from "../../../Services/AuthenticationService";
 import { createMemoryHistory } from "history";
 
@@ -9,16 +8,11 @@ jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-jest.mock("../../../Services/AuthenticationService", () => ({
-  signUp: jest.fn(),
-}));
+jest.mock("../../../Services/AuthenticationService");
 
-jest.mock("react", () => ({
-  ...jest.requireActual("react"),
-  useState: jest.fn(),
-}));
-
-const setState = jest.fn();
+const mockedAuthenticationService = AuthenticationService as jest.Mocked<
+  typeof AuthenticationService
+>;
 
 describe(`<${SignUp.name} />`, () => {
   const history = createMemoryHistory();
@@ -31,16 +25,10 @@ describe(`<${SignUp.name} />`, () => {
     );
   };
 
-  beforeEach(() => {
-    (useStateMock as jest.Mock).mockImplementation(() => [null, setState]);
-  });
-
   test("renders correctly the component", () => {
     const component = factoryComponent();
 
-    act(() => {
-      expect(component.asFragment()).toMatchSnapshot();
-    });
+    expect(component.asFragment()).toMatchSnapshot();
   });
 
   test("fill correctly and call signUp", () => {
@@ -49,7 +37,7 @@ describe(`<${SignUp.name} />`, () => {
     act(() => {
       fireEvent.input(component.getByTestId("sign-up-username"), {
         target: {
-          value: "abcdef",
+          value: "user",
         },
       });
 
@@ -73,7 +61,33 @@ describe(`<${SignUp.name} />`, () => {
 
       fireEvent.click(component.getByTestId("sign-up-submit"));
 
-      expect(AuthenticationService.signUp).toHaveBeenCalled();
+      expect(mockedAuthenticationService.signUp).toHaveBeenCalledWith({
+        email: "test@email.com",
+        password: "abcdef",
+        password_confirmation: "abcdef",
+        username: "user",
+      });
     });
+  });
+
+  test("submit and show errors", async () => {
+    mockedAuthenticationService.signUp.mockRejectedValue({
+      errors: {
+        password_confirmation: [
+          { error: "confirmation", attribute: "password" },
+        ],
+        email: [{ error: "taken", value: "test@email.com" }],
+      },
+    });
+
+    const component = await factoryComponent();
+
+    fireEvent.click(component.getByTestId("sign-up-submit"));
+
+    await waitFor(() => {
+      expect(component.queryByTestId("error-box-email")).toBeTruthy();
+    });
+
+    expect(component.asFragment()).toMatchSnapshot("errors");
   });
 });

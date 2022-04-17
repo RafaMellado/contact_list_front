@@ -13,9 +13,13 @@ export function ErrorBox({ errors, field, params }: ErrorBoxProps) {
     <>
       {errors[field]?.map((item: { error: string }, index: number) => {
         return (
-          <div className="text-danger mt-2 mb-0" key={index}>
+          <div
+            data-testid={`error-box-${field}`}
+            className="text-danger mt-2 mb-0"
+            key={index}
+          >
             <span>
-              {t<string>(`errors.${item.error}`, { field: "email", ...params })}
+              {t<string>(`errors.${item.error}`, { field, ...params })}
             </span>
           </div>
         );

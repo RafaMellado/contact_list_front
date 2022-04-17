@@ -8,7 +8,7 @@ import {
   ContactBookRequestError,
 } from "../../../Services/Interfaces/ContactBook";
 
-interface ContactBookFormProps {
+export interface ContactBookFormProps {
   item?: ContactBook;
   translations: string;
   errors?: ContactBookRequestError;
@@ -36,7 +36,7 @@ export function ContactBookForm({
   return (
     <Card className="form">
       <Card.Body>
-        <Form onSubmit={submit}>
+        <Form data-testid="contact-book-form" onSubmit={submit}>
           <Form.Group className="mb-3">
             <Form.Label>{t<string>(`${translations}.name`)}</Form.Label>
             <Form.Control
@@ -54,7 +54,12 @@ export function ContactBookForm({
           </Form.Group>
 
           <div className="d-flex justify-content-between">
-            <Button className="w-100" variant="secondary" onClick={backFn}>
+            <Button
+              data-testid="contact-book-back-btn"
+              className="w-100"
+              variant="secondary"
+              onClick={backFn}
+            >
               {t<string>(`${translations}.back`)}
             </Button>
             <Button className="w-100 ms-2" variant="primary" type="submit">

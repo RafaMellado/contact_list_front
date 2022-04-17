@@ -1,5 +1,5 @@
 import { ContactShow } from "../Show";
-import { act, fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import ContactsService from "../../../Services/ContactsService";

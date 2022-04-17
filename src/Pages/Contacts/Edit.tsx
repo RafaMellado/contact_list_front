@@ -38,24 +38,32 @@ export function ContactEdit() {
     }
   };
 
+  const getContact = async () => {
+    const response = await ContactsService.show(Number(id));
+
+    setContact(response);
+  };
+
   useEffect(() => {
-    ContactsService.show(Number(id)).then((response) => setContact(response));
+    getContact();
   }, [id]);
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h2 className="mb-4">
-        {t<string>(`${TRANSLATIONS}.title`, {
-          name: `${contact?.givenname} ${contact?.surname}`,
-        })}
-      </h2>
+      {contact?.givenname && (
+        <h2 data-testid="contact-edit-title" className="mb-4">
+          {t<string>(`${TRANSLATIONS}.title`, {
+            name: `${contact.givenname} ${contact.surname}`,
+          })}
+        </h2>
+      )}
 
       <ContactForm
-        data={contact}
+        item={contact}
         translations={TRANSLATIONS}
         errors={errors}
         submitFn={editContact}
-        backToListFn={backToList}
+        backFn={backToList}
       />
     </div>
   );

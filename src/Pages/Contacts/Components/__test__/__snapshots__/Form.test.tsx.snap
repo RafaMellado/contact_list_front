@@ -10,6 +10,7 @@ exports[`<ContactForm /> renders correctly the component 1`] = `
     >
       <form
         class=""
+        data-testid="contact-form"
       >
         <div
           class="mb-3"
@@ -17,16 +18,16 @@ exports[`<ContactForm /> renders correctly the component 1`] = `
           <label
             class="form-label"
           >
-            .givenname
+            test.givenname
           </label>
           <input
             class="form-control"
             maxlength="24"
             minlength="2"
-            placeholder=".givenname"
+            placeholder="test.givenname"
             required=""
             type="text"
-            value=""
+            value="test"
           />
         </div>
         <div
@@ -35,16 +36,16 @@ exports[`<ContactForm /> renders correctly the component 1`] = `
           <label
             class="form-label"
           >
-            .surname
+            test.surname
           </label>
           <input
             class="form-control"
             maxlength="24"
             minlength="2"
-            placeholder=".surname"
+            placeholder="test.surname"
             required=""
             type="text"
-            value=""
+            value="surname test"
           />
         </div>
         <div
@@ -53,14 +54,14 @@ exports[`<ContactForm /> renders correctly the component 1`] = `
           <label
             class="form-label"
           >
-            .email
+            test.email
           </label>
           <input
             class="form-control"
-            placeholder=".email"
+            placeholder="test.email"
             required=""
             type="email"
-            value=""
+            value="test@email.es"
           />
         </div>
         <div
@@ -69,15 +70,15 @@ exports[`<ContactForm /> renders correctly the component 1`] = `
           <label
             class="form-label"
           >
-            .phone
+            test.phone
           </label>
           <input
             class="form-control"
             maxlength="12"
-            placeholder=".phone"
+            placeholder="test.phone"
             required=""
             type="tel"
-            value=""
+            value="12345"
           />
         </div>
         <div
@@ -85,15 +86,136 @@ exports[`<ContactForm /> renders correctly the component 1`] = `
         >
           <button
             class="w-100 btn btn-secondary"
+            data-testid="contact-form-back-btn"
             type="button"
           >
-            .backBtn
+            test.backBtn
           </button>
           <button
             class="w-100 ms-3 btn btn-primary"
             type="submit"
           >
-            .submit
+            test.submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ContactForm /> show errors correctly: errors 1`] = `
+<DocumentFragment>
+  <div
+    class="form card"
+  >
+    <div
+      class="card-body"
+    >
+      <form
+        class=""
+        data-testid="contact-form"
+      >
+        <div
+          class="mb-3"
+        >
+          <label
+            class="form-label"
+          >
+            test.givenname
+          </label>
+          <input
+            class="form-control"
+            maxlength="24"
+            minlength="2"
+            placeholder="test.givenname"
+            required=""
+            type="text"
+            value="test"
+          />
+        </div>
+        <div
+          class="mb-3"
+        >
+          <label
+            class="form-label"
+          >
+            test.surname
+          </label>
+          <input
+            class="form-control"
+            maxlength="24"
+            minlength="2"
+            placeholder="test.surname"
+            required=""
+            type="text"
+            value="surname test"
+          />
+        </div>
+        <div
+          class="mb-3"
+        >
+          <label
+            class="form-label"
+          >
+            test.email
+          </label>
+          <input
+            class="form-control"
+            placeholder="test.email"
+            required=""
+            type="email"
+            value="test@email.es"
+          />
+          <div
+            class="text-danger mt-2 mb-0"
+            data-testid="error-box-email"
+          >
+            <span>
+              errors.email_error
+            </span>
+          </div>
+        </div>
+        <div
+          class="mb-3"
+        >
+          <label
+            class="form-label"
+          >
+            test.phone
+          </label>
+          <input
+            class="form-control"
+            maxlength="12"
+            placeholder="test.phone"
+            required=""
+            type="tel"
+            value="12345"
+          />
+          <div
+            class="text-danger mt-2 mb-0"
+            data-testid="error-box-phone"
+          >
+            <span>
+              errors.phone_error
+            </span>
+          </div>
+        </div>
+        <div
+          class="d-flex justify-content-between"
+        >
+          <button
+            class="w-100 btn btn-secondary"
+            data-testid="contact-form-back-btn"
+            type="button"
+          >
+            test.backBtn
+          </button>
+          <button
+            class="w-100 ms-3 btn btn-primary"
+            type="submit"
+          >
+            test.submit
           </button>
         </div>
       </form>

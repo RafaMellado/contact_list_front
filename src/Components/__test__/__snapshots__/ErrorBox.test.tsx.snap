@@ -4,6 +4,7 @@ exports[`<ErrorBox /> renders correctly the component 1`] = `
 <DocumentFragment>
   <div
     class="text-danger mt-2 mb-0"
+    data-testid="error-box-test"
   >
     <span>
       errors.test

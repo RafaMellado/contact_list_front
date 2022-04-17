@@ -53,5 +53,6 @@ export interface ContactRequestBody {
 export interface ContactRequestError {
   errors: {
     email: Array<{ error: string; value: string }>;
+    phone: Array<{ error: string; value: string }>;
   };
 }

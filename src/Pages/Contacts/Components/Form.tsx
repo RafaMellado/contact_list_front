@@ -8,20 +8,20 @@ import {
   ContactRequestError,
 } from "../../../Services/Interfaces/Contact";
 
-interface ContactFormProps {
-  data?: Contact;
+export interface ContactFormProps {
+  item?: Contact;
   translations: string;
   errors?: ContactRequestError;
-  submitFn: (data: Partial<ContactRequestBody>) => void;
-  backToListFn: () => void;
+  submitFn: (item: Partial<ContactRequestBody>) => void;
+  backFn: () => void;
 }
 
 export function ContactForm({
-  data,
+  item,
   translations,
   errors,
   submitFn,
-  backToListFn,
+  backFn,
 }: ContactFormProps) {
   const { t } = useTranslation();
 
@@ -48,13 +48,13 @@ export function ContactForm({
   return (
     <Card className="form">
       <Card.Body>
-        <Form onSubmit={submit}>
+        <Form data-testid="contact-form" onSubmit={submit}>
           <Form.Group className="mb-3">
             <Form.Label>{t<string>(`${translations}.givenname`)}</Form.Label>
             <Form.Control
               as="input"
               type="text"
-              defaultValue={data?.givenname}
+              defaultValue={item?.givenname}
               placeholder={t<string>(`${translations}.givenname`)}
               maxLength={24}
               minLength={2}
@@ -68,7 +68,7 @@ export function ContactForm({
             <Form.Control
               as="input"
               type="text"
-              defaultValue={data?.surname}
+              defaultValue={item?.surname}
               placeholder={t<string>(`${translations}.surname`)}
               maxLength={24}
               minLength={2}
@@ -82,7 +82,7 @@ export function ContactForm({
             <Form.Control
               as="input"
               type="email"
-              defaultValue={data?.email}
+              defaultValue={item?.email}
               placeholder={t<string>(`${translations}.email`)}
               required
               ref={email}
@@ -96,19 +96,22 @@ export function ContactForm({
             <Form.Control
               as="input"
               type="tel"
-              defaultValue={data?.phone}
+              defaultValue={item?.phone}
               placeholder={t<string>(`${translations}.phone`)}
               maxLength={12}
               required
               ref={phone}
             />
+
+            {errors && <ErrorBox errors={errors.errors} field="phone" />}
           </Form.Group>
 
           <div className="d-flex justify-content-between">
             <Button
+              data-testid="contact-form-back-btn"
               className="w-100"
               variant="secondary"
-              onClick={() => backToListFn()}
+              onClick={() => backFn()}
             >
               {t<string>(`${translations}.backBtn`)}
             </Button>

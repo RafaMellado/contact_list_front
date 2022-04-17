@@ -57,7 +57,7 @@ export function Login() {
             </Form.Group>
 
             {errors?.error && (
-              <div className="text-danger my-2">
+              <div data-testid="login-error" className="text-danger my-2">
                 <span>{t<string>("errors.login")}</span>
               </div>
             )}

@@ -7,6 +7,7 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
   >
     <h2
       class="mb-4"
+      data-testid="contact-edit-title"
     >
       contactsEdit.title
     </h2>
@@ -18,6 +19,7 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
       >
         <form
           class=""
+          data-testid="contact-form"
         >
           <div
             class="mb-3"
@@ -34,7 +36,7 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
               placeholder="contactsEdit.givenname"
               required=""
               type="text"
-              value=""
+              value="test"
             />
           </div>
           <div
@@ -52,7 +54,7 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
               placeholder="contactsEdit.surname"
               required=""
               type="text"
-              value=""
+              value="test surname"
             />
           </div>
           <div
@@ -68,7 +70,7 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
               placeholder="contactsEdit.email"
               required=""
               type="email"
-              value=""
+              value="test@email.com"
             />
           </div>
           <div
@@ -85,7 +87,7 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
               placeholder="contactsEdit.phone"
               required=""
               type="tel"
-              value=""
+              value="1234"
             />
           </div>
           <div
@@ -93,6 +95,137 @@ exports[`<ContactEdit /> renders correctly the component 1`] = `
           >
             <button
               class="w-100 btn btn-secondary"
+              data-testid="contact-form-back-btn"
+              type="button"
+            >
+              contactsEdit.backBtn
+            </button>
+            <button
+              class="w-100 ms-3 btn btn-primary"
+              type="submit"
+            >
+              contactsEdit.submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ContactEdit /> submit form calls editContact correctly and set errors: errors 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex flex-column align-items-center"
+  >
+    <h2
+      class="mb-4"
+      data-testid="contact-edit-title"
+    >
+      contactsEdit.title
+    </h2>
+    <div
+      class="form card"
+    >
+      <div
+        class="card-body"
+      >
+        <form
+          class=""
+          data-testid="contact-form"
+        >
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.givenname
+            </label>
+            <input
+              class="form-control"
+              maxlength="24"
+              minlength="2"
+              placeholder="contactsEdit.givenname"
+              required=""
+              type="text"
+              value="test"
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.surname
+            </label>
+            <input
+              class="form-control"
+              maxlength="24"
+              minlength="2"
+              placeholder="contactsEdit.surname"
+              required=""
+              type="text"
+              value="test surname"
+            />
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.email
+            </label>
+            <input
+              class="form-control"
+              placeholder="contactsEdit.email"
+              required=""
+              type="email"
+              value="test@email.com"
+            />
+            <div
+              class="text-danger mt-2 mb-0"
+              data-testid="error-box-email"
+            >
+              <span>
+                errors.email
+              </span>
+            </div>
+          </div>
+          <div
+            class="mb-3"
+          >
+            <label
+              class="form-label"
+            >
+              contactsEdit.phone
+            </label>
+            <input
+              class="form-control"
+              maxlength="12"
+              placeholder="contactsEdit.phone"
+              required=""
+              type="tel"
+              value="1234"
+            />
+            <div
+              class="text-danger mt-2 mb-0"
+              data-testid="error-box-phone"
+            >
+              <span>
+                errors.phone
+              </span>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-between"
+          >
+            <button
+              class="w-100 btn btn-secondary"
+              data-testid="contact-form-back-btn"
               type="button"
             >
               contactsEdit.backBtn

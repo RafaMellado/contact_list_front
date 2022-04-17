@@ -42,7 +42,7 @@ export function ContactNew() {
       <ContactForm
         translations={TRANSLATIONS}
         errors={errors}
-        backToListFn={backToList}
+        backFn={backToList}
         submitFn={addContact}
       />
     </div>
