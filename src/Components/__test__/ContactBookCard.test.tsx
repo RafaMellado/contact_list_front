@@ -5,8 +5,8 @@ import type { ContactBookCardProps } from "../ContactBookCard";
 describe(`<${ContactBookCard.name} />`, () => {
   const contactBookCardProps: ContactBookCardProps = {
     name: "test",
-    editFn: jest.fn(),
-    deleteFn: jest.fn(),
+    onEdit: jest.fn(),
+    onDelete: jest.fn(),
   };
 
   const factoryComponent = (
@@ -21,7 +21,7 @@ describe(`<${ContactBookCard.name} />`, () => {
     });
   });
 
-  test("should execute editFn function onClick", () => {
+  test("should execute onEdit function onClick", () => {
     const component = factoryComponent();
 
     act(() => {
@@ -30,10 +30,10 @@ describe(`<${ContactBookCard.name} />`, () => {
       fireEvent.click(element);
     });
 
-    expect(contactBookCardProps.editFn).toHaveBeenCalled();
+    expect(contactBookCardProps.onEdit).toHaveBeenCalled();
   });
 
-  test("should execute deleteFn function onClick", () => {
+  test("should execute onDelete function onClick", () => {
     const component = factoryComponent();
 
     act(() => {
@@ -42,6 +42,6 @@ describe(`<${ContactBookCard.name} />`, () => {
       fireEvent.click(element);
     });
 
-    expect(contactBookCardProps.deleteFn).toHaveBeenCalled();
+    expect(contactBookCardProps.onDelete).toHaveBeenCalled();
   });
 });

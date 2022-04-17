@@ -83,8 +83,8 @@ export function ContactBookIndex() {
           >
             <ContactBookCard
               name={name}
-              editFn={() => editContactBook(id)}
-              deleteFn={() => deleteContactBook(id)}
+              onEdit={() => editContactBook(id)}
+              onDelete={() => deleteContactBook(id)}
             />
           </Col>
         );

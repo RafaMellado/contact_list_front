@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Error401 /> renders correctly the component 1`] = `
+exports[`<ErrorPage /> renders correctly the component 1`] = `
 <DocumentFragment>
   <div
     class="d-flex align-items-center justify-content-center flex-column"

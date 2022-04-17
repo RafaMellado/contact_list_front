@@ -2,8 +2,50 @@
 
 exports[`<Error403 /> renders correctly the component 1`] = `
 <DocumentFragment>
-  <h1>
-    Error 403
-  </h1>
+  <div
+    class="d-flex align-items-center justify-content-center flex-column"
+  >
+    <div
+      class="d-flex align-items-center flex-column"
+    >
+      <svg
+        class="h1"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM8.523 7.109A6.04 6.04 0 0 0 7.11 8.523l8.368 8.368a6.04 6.04 0 0 0 1.414-1.414L8.523 7.109z"
+          />
+        </g>
+      </svg>
+      <h2>
+        errors.403.title
+      </h2>
+    </div>
+    <h5>
+      errors.403.description
+    </h5>
+    <div
+      class="mt-2"
+    >
+      <button
+        class="w-100 ms-2 btn btn-primary"
+        data-testid="error-page-btn"
+        type="button"
+      >
+        errors.back
+      </button>
+    </div>
+  </div>
 </DocumentFragment>
 `;

@@ -12,16 +12,16 @@ export interface ContactFormProps {
   item?: Contact;
   translations: string;
   errors?: ContactRequestError;
-  submitFn: (item: Partial<ContactRequestBody>) => void;
-  backFn: () => void;
+  onSubmit: (item: Partial<ContactRequestBody>) => void;
+  onBack: () => void;
 }
 
 export function ContactForm({
   item,
   translations,
   errors,
-  submitFn,
-  backFn,
+  onSubmit,
+  onBack,
 }: ContactFormProps) {
   const { t } = useTranslation();
 
@@ -42,7 +42,7 @@ export function ContactForm({
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    submitFn(formParams());
+    onSubmit(formParams());
   };
 
   return (
@@ -111,7 +111,7 @@ export function ContactForm({
               data-testid="contact-form-back-btn"
               className="w-100"
               variant="secondary"
-              onClick={() => backFn()}
+              onClick={() => onBack()}
             >
               {t<string>(`${translations}.backBtn`)}
             </Button>

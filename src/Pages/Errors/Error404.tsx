@@ -1,3 +1,6 @@
+import { BsXOctagonFill } from "react-icons/bs";
+import { ErrorPage } from "./Components/ErrorPage";
+
 export function Error404() {
-  return <h1>Error 404</h1>;
+  return <ErrorPage code={404} Icon={BsXOctagonFill} />;
 }

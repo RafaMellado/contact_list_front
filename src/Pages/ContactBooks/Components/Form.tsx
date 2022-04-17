@@ -12,16 +12,16 @@ export interface ContactBookFormProps {
   item?: ContactBook;
   translations: string;
   errors?: ContactBookRequestError;
-  submitFn: (data: ContactBookRequestBody) => void;
-  backFn: () => void;
+  onSubmit: (data: ContactBookRequestBody) => void;
+  onBack: () => void;
 }
 
 export function ContactBookForm({
   item,
   translations,
   errors,
-  submitFn,
-  backFn,
+  onSubmit,
+  onBack,
 }: ContactBookFormProps) {
   const { t } = useTranslation();
 
@@ -30,7 +30,7 @@ export function ContactBookForm({
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    submitFn({ name: String(name?.current?.value) });
+    onSubmit({ name: String(name?.current?.value) });
   };
 
   return (
@@ -58,7 +58,7 @@ export function ContactBookForm({
               data-testid="contact-book-back-btn"
               className="w-100"
               variant="secondary"
-              onClick={backFn}
+              onClick={onBack}
             >
               {t<string>(`${translations}.back`)}
             </Button>

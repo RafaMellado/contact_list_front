@@ -7,14 +7,14 @@ import {
 
 export interface ContactBookCardProps {
   name: string;
-  editFn: () => void;
-  deleteFn: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 }
 
 export function ContactBookCard({
   name,
-  editFn,
-  deleteFn,
+  onEdit,
+  onDelete,
 }: ContactBookCardProps) {
   return (
     <Card className="platform-card">
@@ -32,7 +32,7 @@ export function ContactBookCard({
             onClick={(event) => {
               event.stopPropagation();
 
-              editFn();
+              onEdit();
             }}
           />
 
@@ -43,7 +43,7 @@ export function ContactBookCard({
             onClick={(event) => {
               event.stopPropagation();
 
-              deleteFn();
+              onDelete();
             }}
           />
         </div>

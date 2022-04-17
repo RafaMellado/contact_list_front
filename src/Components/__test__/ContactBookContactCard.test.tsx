@@ -17,9 +17,9 @@ describe(`<${ContactBookContactCard.name} />`, () => {
       contact_book_id: 1,
     },
     translations: "contactBooksShow",
-    cardFn: jest.fn(),
-    editFn: jest.fn(),
-    deleteFn: jest.fn(),
+    onClick: jest.fn(),
+    onEdit: jest.fn(),
+    onDelete: jest.fn(),
   };
 
   const factoryComponent = (
@@ -34,7 +34,7 @@ describe(`<${ContactBookContactCard.name} />`, () => {
     });
   });
 
-  test("should execute cardFn function onClick", () => {
+  test("should execute onClick function when click card", () => {
     const component = factoryComponent();
 
     act(() => {
@@ -43,10 +43,10 @@ describe(`<${ContactBookContactCard.name} />`, () => {
       fireEvent.click(element);
     });
 
-    expect(contactBookContactCardProps.cardFn).toHaveBeenCalled();
+    expect(contactBookContactCardProps.onClick).toHaveBeenCalled();
   });
 
-  test("should execute editFn function onClick", () => {
+  test("should execute onEdit function when click on edit icon", () => {
     const component = factoryComponent();
 
     act(() => {
@@ -57,10 +57,10 @@ describe(`<${ContactBookContactCard.name} />`, () => {
       fireEvent.click(element);
     });
 
-    expect(contactBookContactCardProps.editFn).toHaveBeenCalled();
+    expect(contactBookContactCardProps.onEdit).toHaveBeenCalled();
   });
 
-  test("should execute deleteFn function onClick", () => {
+  test("should execute onDelete function when click on delete icon", () => {
     const component = factoryComponent();
 
     act(() => {
@@ -71,6 +71,6 @@ describe(`<${ContactBookContactCard.name} />`, () => {
       fireEvent.click(element);
     });
 
-    expect(contactBookContactCardProps.deleteFn).toHaveBeenCalled();
+    expect(contactBookContactCardProps.onDelete).toHaveBeenCalled();
   });
 });

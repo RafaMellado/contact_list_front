@@ -53,8 +53,8 @@ export function ContactBookEdit() {
       <ContactBookForm
         translations={TRANSLATIONS}
         item={contactBook}
-        submitFn={editContactBook}
-        backFn={backToHome}
+        onSubmit={editContactBook}
+        onBack={backToHome}
         errors={errors}
       />
     </div>

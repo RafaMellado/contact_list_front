@@ -6,13 +6,13 @@ jest.mock("react-i18next", () => ({
 }));
 
 describe(`<${ContactBookForm.name} />`, () => {
-  const submitFn = jest.fn();
-  const backFn = jest.fn();
+  const onSubmit = jest.fn();
+  const onBack = jest.fn();
 
   const defaultProps: ContactBookFormProps = {
     translations: "test",
-    submitFn: submitFn,
-    backFn: backFn,
+    onSubmit: onSubmit,
+    onBack: onBack,
     item: {
       id: 1,
       name: "test",
@@ -29,20 +29,20 @@ describe(`<${ContactBookForm.name} />`, () => {
     expect(component.asFragment()).toMatchSnapshot();
   });
 
-  test("submit calls submitFn correctly", () => {
+  test("submit calls onSubmit correctly", () => {
     const component = factoryComponent();
 
     fireEvent.submit(component.getByTestId("contact-book-form"));
 
-    expect(submitFn).toHaveBeenCalledWith({ name: "test" });
+    expect(onSubmit).toHaveBeenCalledWith({ name: "test" });
   });
 
-  test("click on backBtn redirects correctly", () => {
+  test("click on onBack redirects correctly", () => {
     const component = factoryComponent();
 
     fireEvent.click(component.getByTestId("contact-book-back-btn"));
 
-    expect(backFn).toHaveBeenCalled();
+    expect(onBack).toHaveBeenCalled();
   });
 
   test("show errors correctly", () => {

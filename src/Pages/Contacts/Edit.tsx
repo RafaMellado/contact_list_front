@@ -62,8 +62,8 @@ export function ContactEdit() {
         item={contact}
         translations={TRANSLATIONS}
         errors={errors}
-        submitFn={editContact}
-        backFn={backToList}
+        onSubmit={editContact}
+        onBack={backToList}
       />
     </div>
   );

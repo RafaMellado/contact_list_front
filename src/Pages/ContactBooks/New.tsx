@@ -35,8 +35,8 @@ export function ContactBookNew() {
 
       <ContactBookForm
         translations={TRANSLATIONS}
-        submitFn={addContactBook}
-        backFn={backToHome}
+        onSubmit={addContactBook}
+        onBack={backToHome}
         errors={errors}
       />
     </div>

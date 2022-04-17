@@ -113,9 +113,9 @@ export function ContactBookShow() {
                 <ContactBookContactCard
                   item={item}
                   translations={TRANSLATIONS}
-                  cardFn={() => goToContactShow(item.id)}
-                  editFn={() => goToEditContact(item.id)}
-                  deleteFn={() => deleteContact(item.id)}
+                  onClick={() => goToContactShow(item.id)}
+                  onEdit={() => goToEditContact(item.id)}
+                  onDelete={() => deleteContact(item.id)}
                 />
               </Col>
             );

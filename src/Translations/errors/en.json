@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "401": {
+      "title": "Unauthorized",
+      "description": "You aren't authorized for this action. Maybe you have to log in the platform"
+    },
+    "403": {
+      "title": "Forbidden",
+      "description": "You don't have permissions to access at this resource."
+    },
+    "404": {
+      "title": "Not Found",
+      "description": "We can't find this resource."
+    },
+    "500": {
+      "title": "Internal Error",
+      "description": "Something wrong is happen. Please try again later."
+    },
+
+    "back": "Back"
+  }
+}

@@ -10,17 +10,17 @@ import { Contact } from "../Services/Interfaces/Contact";
 export interface ContactBookContactCardProps {
   item: Contact;
   translations: string;
-  cardFn: () => void;
-  editFn: () => void;
-  deleteFn: () => void;
+  onClick: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 }
 
 export function ContactBookContactCard({
   item,
   translations,
-  cardFn,
-  editFn,
-  deleteFn,
+  onClick,
+  onEdit,
+  onDelete,
 }: ContactBookContactCardProps) {
   const { t } = useTranslation();
 
@@ -29,7 +29,7 @@ export function ContactBookContactCard({
       <Card
         data-testid="contact-book-contact-card"
         className="platform-card"
-        onClick={() => cardFn()}
+        onClick={() => onClick()}
       >
         <Card.Body className="d-flex justify-content-between flex-column">
           <div className="d-flex flex-column justify-content-between">
@@ -63,7 +63,7 @@ export function ContactBookContactCard({
               onClick={(event) => {
                 event.stopPropagation();
 
-                editFn();
+                onEdit();
               }}
             />
 
@@ -74,7 +74,7 @@ export function ContactBookContactCard({
               onClick={(event) => {
                 event.stopPropagation();
 
-                deleteFn();
+                onDelete();
               }}
             />
           </div>
